@@ -1,0 +1,79 @@
+/* components/nav-top-bar/nav-top-bar.wxss */
+.navTopBar {
+  /* 顶部要固定定位   标题要居中   自定义按钮和标题要和右边微信原生的胶囊上下对齐 */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: #000;
+  z-index: 9999999;
+  background-color: #fff;
+  padding-left: 12px;
+
+}
+/* 标题要居中 */
+.nav-title {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  font-size: 32rpx;
+  z-index: 999;
+  display: inline-block;
+  width: calc(100% - 80px);
+  position: absolute;
+  justify-content: center;
+  padding-right: 50px;
+  color: #111111;
+}
+.capsule-back {
+  width: 90px;
+  display: inline-block;
+}
+.capsule-back image {
+  vertical-align: middle;
+}
+.capsule-backtext {
+  font-size: 30rpx;
+  vertical-align: middle;
+  color: #ffffff;
+}
+.nav-capsule {
+  width: 90px;
+  /*background-color: rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 38rpx;*/
+}
+.nav-capsule .nav-btn {
+  float: left;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+}
+.nav-capsule .nav-btn::after{
+   position: absolute;
+   z-index: 1;
+   content: '';
+   right: 0;
+   height: 20px;
+   background-color: rgba(255, 255, 255, 0.2);
+   top: calc(50% - 10px);
+   width: 1px;
+   display: inline-block;
+ }
+.nav-capsule .nav-btn:last-child::after{
+   display: none;
+ }
+
+.back-pre, .back-home {
+  width: 20px;
+  height: 20px;
+}

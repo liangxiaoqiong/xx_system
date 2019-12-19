@@ -1,0 +1,91 @@
+.skeleton-body{
+  width:100%;
+  height: calc(100% - 202rpx);
+  top: 102rpx;
+  left: 0;
+  position: absolute;
+  background-color: #fff;
+  z-index:9998;
+  overflow: hidden;
+  display: inline-block;
+}
+.skeleton-body .left{
+  width:25%;
+  float: left;
+  height: 100%;
+}
+.skeleton-body .left view{
+  padding: 16rpx 10rpx;
+}
+.skeleton-body .left view:first-child text{
+  width: 100%;
+  height: 56rpx;
+  background: #f0f0f0;
+  display: inline-block;
+  border-radius: 28rpx;
+}
+.skeleton-body .right{
+  width:75%;
+  border-right: 1px solid #f0f0f0;
+  float: left;
+  height: 100%;
+}
+.skeleton-body .right .list-search{
+  width:100%;
+  height: 80rpx;
+  text-align: right;
+  padding: 20rpx;
+}
+.skeleton-body .right .list-search text{
+  width:50%;
+  height: 40rpx;
+  display: inline-block;
+  background: #f0f0f0;
+  vertical-align: middle;
+}
+.skeleton-body .right .list-item{
+  width:100%;
+  padding: 20rpx;
+  display: inline-block;
+}
+.skeleton-body .right .list-item .list-img{
+  width:196rpx;
+  height:196rpx;
+  float: left;
+  background: #f0f0f0
+}
+.skeleton-body .right .list-item .list-text{
+  width:calc(100% - 196rpx);
+  height:196rpx;
+  float: left;
+  padding-left:15rpx;
+  position: relative
+}
+.skeleton-body .right .list-item .list-text text{
+  width: 100%;
+  display: inline-block;
+  background: #f0f0f0;
+  height: 40rpx;
+  margin-bottom: 20rpx;
+}
+.skeleton-body .right .list-item .list-text view{
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 15rpx;
+  background: #f0f0f0;
+  height: 40rpx;
+  z-index: 1;
+  display: inline-block;
+}
+.skeleton-body .right .list-item .list-text icon{
+  position: absolute;
+  bottom: 0;
+  right: 5rpx;
+  background: #f0f0f0;
+  width: 38rpx;
+  height: 38rpx;
+  display: inline-block;
+  z-index: 1;
+  border-radius: 100%;
+}

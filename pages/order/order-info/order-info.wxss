@@ -1,0 +1,150 @@
+/*pages/order/order-info/order-info.wxss*/
+@import '../order.wxss';
+.order-state{
+  position:relative;
+  width: 100%;
+  height: 200rpx;
+  display: inline-block;
+}
+.order-state .state-bg{
+  width: 100%;
+  height: 100%;
+}
+.order-state.state__grey{
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  filter: gray;
+  opacity: .8
+}
+.order-state .state-info{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  padding:30rpx;
+  color: #fff;
+}
+.order-state .state-info .state-icon{
+  width: 78rpx;
+  height: 72rpx;
+  vertical-align: top;
+}
+.order-state .state-info .state-text{
+  max-width: calc(100% - 80rpx);
+  display: inline-block;
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+}
+.state-title{
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.state-desc{
+  font-size: 26rpx;
+}
+.order-address{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.order-address image{
+  width: 26rpx;
+	height: 30rpx;
+  font-display: inline-block;
+}
+.order-address .address-info{
+  width: calc(100% - 40rpx);
+  padding-left: 28rpx
+}
+.order-address .address-info .add-text{
+  color: #000000;
+  font-size: 26rpx;
+  margin-bottom: 5rpx;
+}
+.order-address .address-info .add-user text{
+  color: #999999;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+.order-data{
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+}
+.order-data .order-store{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin: 16rpx 0;
+}
+.order-data .data-dl{
+  padding: 10rpx 0;
+  font-size: 26rpx;
+}
+.order-data .data-dl .dt{
+  color: #000000;
+}
+.order-data .data-dl .dd{
+  color: #666;
+  display: inline-block;
+  vertical-align: top;
+  max-width: calc(100% - 100rpx)
+}
+.price-account{
+  background-color: #fff;
+}
+.price-account .price-old{
+  padding: 15rpx 30rpx;
+}
+.price-account .price-old>view{
+  padding: 15rpx 0;
+}
+.price-account .price-old>view text:first-child{
+  font-size: 26rpx;
+}
+.price-account .price-old>view text.fr{
+  font-weight: bold;
+  font-size: 26rpx;
+}
+.price-result{
+  position: relative;
+  text-align: right;
+  padding: 30rpx;
+}
+.price-result::before{
+  width: calc(100% - 30rpx);
+  height: 1px;
+  display: inline-block;
+  background: #f0f0f0;
+  content: '';
+  top: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+}
+.price-result .price-t{
+  font-size: 26rpx;
+  vertical-align: middle;
+}
+.price-result .price-n{
+  vertical-align: middle;
+  font-size: 36rpx;
+  color: #f82e2e;
+  font-weight: bold;
+}
+.order-foot .c-left,
+.order-foot .c-right{
+  width: 50%;
+  font-size: 30rpx;
+}
+.order-foot .c-left{
+  background: #fff;
+  color: #999999;
+  justify-content: center;
+}
+.order-foot .c-right{
+  background-color: #f82e2e;
+}

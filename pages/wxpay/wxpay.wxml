@@ -1,0 +1,8 @@
+<!--pages/wxpay/wxpay.wxml-->
+
+<!--6、支付方式弹框、调取微信支付接口-->
+<view>
+  <component-payment
+      id="payment"
+      parent-type="wxpay"></component-payment>
+</view>

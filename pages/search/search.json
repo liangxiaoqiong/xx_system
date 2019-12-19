@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "搜索商品",
+  "usingComponents": {
+    "component-goods-item": "/components/goods-item/goods-item",
+    "component-spec-layer": "/components/spec-layer/spec-layer",
+    "component-spec-minus-layer": "/components/spec-minus-layer/spec-minus-layer",
+    "component-foot-cart": "/components/foot-cart/foot-cart",
+    "component-login-layer": "/components/login/login-layer/login-layer"
+  }
+}

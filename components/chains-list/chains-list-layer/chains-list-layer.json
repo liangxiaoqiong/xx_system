@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "chains-list-item": "/components/chains-list/chains-list-item/chains-list-item"
+  }
+}

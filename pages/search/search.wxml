@@ -1,0 +1,59 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+  <view class="page-body">
+    <view class="search-head">
+      <view class="search-content">
+        <input
+            type="search" confirm-type="search"
+            placeholder="{{(searchTag.default && searchTag.default.tags != '') ? searchTag.default.tags : '请输入关键字'}}"
+            value="{{query.goods_name}}"
+            bindconfirm="submitSearch" bindinput="inputSearch"/>
+        <icon class="clear-input" hidden="{{query.keyword == ''}}" bindtap="clearSearch"></icon>
+      </view>
+      <navigator class="search-btn" url="/pages/classify/classify">取消</navigator>
+    </view>
+    <!--热搜-->
+    <view class="hot-search" wx:if="{{!searchCompleted}}">
+      <text class='title'>热搜</text>
+      <scroll-view>
+        <view class="hot-list">
+          <block wx:for="{{searchTag.list}}" wx:key='{{index}}'>
+            <text data-item="{{item}}" bindtap='changeKeyword'>{{item.tags}}</text>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <!--搜索的商品列表-->
+    <scroll-view
+        class="search-goods"
+        scroll-y="true" lower-threshold="1000" bindscrolltolower="moreGoods"
+        wx:if="{{searchCompleted}}">
+      <view  wx:if="{{searchGoods.total > 0}}">
+        <block wx:for="{{searchGoods.list}}" wx:key="{{index}}">
+          <component-goods-item
+              id="goods-item__{{item.goods_id}}"
+              user-info="{{userInfo}}"
+              goods-item="{{item}}"
+              bindlogin="showLoginLayer"
+              bindspeclayer="syncSpecLayer"
+              bindspecminuslayer="syncSpecMinusLayer"
+              bind:syncnum="syncCartNum"></component-goods-item>
+        </block>
+      </view>
+      <view wx:else class="request-none">
+        <image src="../../images/img_common/none_default.png"></image>
+        <view class="none-tip">抱歉，暂无搜索结果</view>
+      </view>
+    </scroll-view>
+  </view>
+  <view>
+    <!--底部购物车-->
+    <component-foot-cart id="footCart" bindmyevent="cartToPage" bindlogin="showLoginLayer"></component-foot-cart>
+    <!--多规格弹框-->
+    <component-spec-layer id="spec-layer" bind:syncnum="syncCartNum"></component-spec-layer>
+    <!--多规格减减弹框-->
+    <component-spec-minus-layer id="spec-minus-layer" bind:syncnum="syncCartNum"></component-spec-minus-layer>
+    <!--登录弹框-->
+    <component-login-layer id="login-layer" bindlogincomplete="refreshPage"></component-login-layer>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<!--重新授权按钮界面-->
+<!--components/load-index/load-index.wxml-->
+<view class="page-auth" wx:if="{{!isAuthorize}}">
+  <view class="auth-store">
+    <image src="{{storeData.store_label}}"></image>
+    <view class="store-name">{{storeData.store_name}}</view>
+  </view>
+  <view class="auth-desc">
+    <view class="auth-title">登录后应用将获得以下权限</view>
+    <view class="auth-tip">
+      获得你的公开的信息(昵称、头像、地区及性别)
+    </view>
+  </view>
+  <!-- 需要使用 button 来授权登录 -->
+  <button
+      wx:if="{{canIUse}}"
+      open-type="getUserInfo"
+      bindgetuserinfo="bindGetUserInfo"
+  >
+    确认登录
+  </button>
+  <view wx:else>请升级微信版本</view>
+</view>

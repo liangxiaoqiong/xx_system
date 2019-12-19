@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/classify/classify",
+    "pages/search/search",
+    "pages/goods-info/goods-info",
+    "pages/order/cart-settlement/cart-settlement",
+    "pages/order/order-list/order-list",
+    "pages/order/order-info/order-info",
+    "pages/address/address-list/address-list",
+    "pages/address/address-info/address-info",
+    "pages/user/user",
+    "pages/coupon/coupon",
+    "pages/balance/balance",
+    "pages/recharge/recharge",
+    "pages/wxpay/wxpay",
+    "pages/credit/credit",
+    "pages/test_code/canvas",
+    "pages/test_code/count-down/count-down",
+    "pages/test_code/swiper_float/swiper-float"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,15 @@
+<!--components/pick-region/pick-region.wxml 地址联级选择器-->
+<picker
+    mode="multiSelector"
+    bindchange="bindRegionPickerChange"
+    bindcolumnchange="bindRegionPickerColumnChange"
+    value="{{selectRegion}}"
+    range="{{regionAreaNameList}}"
+>
+  <view class="picker">
+    <block wx:if="{{submitSelectRegionName[0] == ''}}">请选择</block>
+    <block wx:else>
+      {{submitSelectRegionName[0]}}{{submitSelectRegionName[1]}}{{submitSelectRegionName[2]}}{{submitSelectRegionName[3]}}
+    </block>
+  </view>
+</picker>

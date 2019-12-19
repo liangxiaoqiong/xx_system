@@ -1,0 +1,20 @@
+<!--components/buy-num-layer-->
+<block>
+  <view class="cart-num-view" wx:if="{{storeData.price_is_hide == 0}}">
+    <!--无库存，已售罄-->
+    <block wx:if="{{goodsItem.goods_storage == 0}}">
+      <text class="no-storage">已售罄</text>
+    </block>
+    <block wx:else>
+      <block wx:if="{{goodsItem.buy_num > 0}}">
+        <view class="cart-num-icon" data-type="minus" catchtap="goodsNumAction">
+          <icon class="myicon-minus"></icon>
+        </view>
+        <text>{{goodsItem.buy_num}}</text>
+      </block>
+      <view class="cart-num-icon" data-type="add" catchtap="goodsNumAction">
+        <icon class="myicon-add"></icon>
+      </view>
+    </block>
+  </view>
+</block>

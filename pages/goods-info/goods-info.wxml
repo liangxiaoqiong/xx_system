@@ -1,0 +1,109 @@
+<!--goods-info/goods-info.wxml-->
+<import src="../../utils/wxParse/wxParse.wxml"/>
+<nav-top-bar id="navTopBar"></nav-top-bar>
+<view class="container" style="margin-top: {{navTopH}}px;overflow-y: hidden">
+  <scroll-view scroll-y style="height:{{scrollHeight}}px" class="page-body page-goods-info">
+    <view class="swiper-img">
+      <swiper indicator-dots="" autoplay="true" interval="2000" duration="500" style="height:{{swiperH}}px">
+        <block wx:for="{{info.images}}" wx:key="*this">
+          <swiper-item>
+            <image src="{{item.url}}" style="height:{{swiperH}}px"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="goods-base {{info.is_chains == 1 && info.state > 0 ? 'goods-base-state' : ''}}">
+      <!--有促销倒计时显示-->
+      <block wx:if="{{info.state > 0}}">
+        <goods-info-price0 info="{{info}}" id="goodsCountTime" goods-state="{{goods_state}}"></goods-info-price0>
+      </block>
+      <view class="goods-base-other">
+        <view class="goods-name">
+          <text>{{info.goods_name}}</text>
+          <button class="share-btn" wx:if="{{info.is_chains == 1}}" bindtap="clickChainsShare">
+            <image src="../../images/img_icon/share_red.png"></image>
+          </button>
+        </view>
+        <view class="limit-buy" wx:if="{{info.limit_buy > -1}}">
+          <text class="title">限购</text>
+          <text class="content">本商品每人仅限购{{info.limit_buy}}件</text>
+        </view>
+        <view class="goods-price-type_0" wx:if="{{info.state < 1}}">
+          <view class="goods-sale">销量 {{info.sale_num}}份</view>
+          <view class="price-num">
+            <view class="goods-price">
+              <block wx:if="{{storeData.credits_model == 1 && info.credits_limit > 0}}">
+                {{info.credits_limit}}<text style="font-size: 22rpx">积分</text>+<text style="font-size: 22rpx">￥</text>{{ info.new_price }}
+              </block>
+              <block wx:else>
+                <text style="font-size: 22rpx">￥</text>{{info.state > 0 ? info.new_price : info.goods_price}}
+              </block>
+            </view>
+          </view>
+        </view>
+        <block>
+          <component-buy-num-layer
+              id="buyNumLayer"
+              user-info="{{userInfo}}"
+              goods-item="{{info}}" store-data="{{storeData}}"
+              bindlogin="showLoginLayer"
+              bindspeclayer="syncSpecLayer"
+              bindspecminuslayer="syncSpecMinusLayer"
+              bindmyevent="getBuyNum" id="buyNumLayer"></component-buy-num-layer>
+        </block>
+      </view>
+    </view>
+
+    <!--region 接龙-->
+    <block wx:if="{{info.is_chains == 1}}">
+      <view class="goods-chains">
+        <view class="chains-title" bindtap="showChainsLayer">
+          <view class="title">接龙</view>
+          <view class="tip">限时优惠，赶快邀请好友接龙吧！</view>
+        </view>
+        <view class="chains-list" wx:if="{{info.chains_list.total > 0}}">
+          <block wx:for="{{info.chains_list.list}}" wx:key="{{index}}" wx:if="{{ index <= 4}}">
+            <chains-list-item
+                chains="{{item}}"
+                key="{{info.chains_list.total - index}}"></chains-list-item>
+          </block>
+        </view>
+        <view wx:if="{{isLoadChains}}" class="load-chains">接龙数据加载中...</view>
+      </view>
+    </block>
+    <!--endregion-->
+
+    <view class="goods-info" wx:if="{{info.goods_figure.length > 0}}">
+        <view class='goods-info-t'><text>详情介绍</text></view>
+        <view class="info-figure">
+          <view wx:for="{{info.goods_figure}}" wx:key="{{index}}">
+            <image src="{{item.url}}"  mode="widthFix"></image>
+            <text>{{item.text}}</text>
+          </view>
+        </view>
+        <view class="info-desc">
+          <template is="wxParse" data="{{wxParseData:goodsContent.nodes}}"/>
+        </view>
+      </view>
+  </scroll-view>
+
+  <view>
+    <!--底部购物车-->
+    <component-foot-cart id="footCart" goods-info="{{info}}" bindmyevent="cartToPage" bindlogin="showLoginLayer"></component-foot-cart>
+    <!--多规格弹框-->
+    <component-spec-layer id="spec-layer" bind:syncnum="syncCartNum"></component-spec-layer>
+    <!--多规格减减弹框-->
+    <component-spec-minus-layer id="spec-minus-layer" bind:syncnum="syncCartNum"></component-spec-minus-layer>
+
+    <!--登录弹框-->
+    <component-login-layer id="login-layer" bindlogincomplete="refreshPage"></component-login-layer>
+
+    <!--生成卡片的画布[放底部防止画面闪动]-->
+    <canvas canvas-id='goods-share-card' style='width:560px;height:{{canvasCardHeight}}px;' hidden="{{canvasHidden}}"></canvas>
+    <canvas canvas-id='goods-share-img' style='width:500px;height:{{canvasShareHeight}}px;' hidden="{{canvasShareHidden}}"></canvas>
+    <!--接龙列表弹框-->
+    <chains-list-layer id="chainsListLayer" chains-data="{{chainsData}}"></chains-list-layer>
+    <!--接龙卡片弹框-->
+    <chains-card-layer id="chainsCardLayer" chains-total="{{chainsData.total}}"></chains-card-layer>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<!--components/goods-info/goods-info-price-0/goods-info-price0.wxml-->
+<view class="goods-price-type_1">
+  <view class="left-top">{{goodsState[info.state].state_title}}</view>
+  <view class="content-container">
+    <view class="left" style="{{info.state != 2 ? 'width:100%' : ''}}">
+      <view class="left-icon flex-row"></view>
+      <view class="left-price flex-row">
+        <view class="new-price">
+          <block wx:if="{{storeData.credits_model == 1 && info.credits_limit > 0}}">
+            <text class="b">{{info.credits_limit}}</text>
+            <text class="font">积分</text>
+            <text class="b">+</text>
+            <text class="font">￥</text>
+            <text class="b">{{ info.new_price }}</text>
+          </block>
+          <block wx:else>
+            <text class="font">￥</text>
+            <text class="b">{{info.state > 0 ? info.new_price : info.goods_price}}</text>
+          </block>
+        </view>
+        <view class="oldprice-sale">
+          <view class="price">￥{{ info.goods_price }}</view>
+          <view class="sale">已售：{{ info.sale_num }}</view>
+        </view>
+      </view>
+    </view>
+    <view class="right" wx:if="{{info.state == 2}}">
+      <view class="title">距抢购结束还有</view>
+      <view class="right-time">
+        <block wx:if="{{info.sheng_yu_time > 0}}">
+          <block wx:if="{{countDown.day > 0}}">
+            <text class="font">{{countDown.day}}</text>
+            <text>天</text>
+          </block>
+          <text class="font">{{countDown.hour}}</text>
+          <text class="b">:</text>
+          <text class="font">{{countDown.minute}}</text>
+          <text class="b">:</text>
+          <text class="font">{{countDown.second}}</text>
+        </block>
+        <block wx:else><text>已结束</text></block>
+      </view>
+    </view>
+  </view>
+</view>

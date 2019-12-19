@@ -1,0 +1,12 @@
+<!--pages/test_code/swiper_float/swiper-float.wxml-->
+<view style="height: 140px;background-color: #ffffff">
+<swiper class="swiper" next-margin="140rpx" current-item-id="{{currentItemId}}" previous-margin="140rpx" bindchange="swiperChange">
+  <block wx:for="{{backClass}}" wx:key="index">
+    <swiper-item item-id="{{index}}" data-item-id="{{index}}" bindtap='clickChange'>
+      <view class='li'>
+        <view class='li1 {{item}} {{currentItemId == index ? "selected" : ""}}' ></view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+</view>

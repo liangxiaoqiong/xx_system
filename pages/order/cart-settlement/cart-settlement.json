@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "确认订单",
+  "usingComponents": {
+    "component-coupon-layer": "/components/coupon-layer/coupon-layer",
+    "component-pend-layer": "/components/pend-layer/pend-layer",
+    "component-payment": "/components/payment/payment",
+    "component-delivery-layer": "/components/delivery-layer/delivery-layer"
+  }
+}

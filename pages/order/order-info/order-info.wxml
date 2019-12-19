@@ -1,0 +1,115 @@
+<!--pages/order/order-info/order-info.wxml-->
+<wxs src="../../../utils/filter.wxs" module="filter" />
+<view class="container">
+  <view class="page-body order-info" wx:if="{{loadCompleted}}">
+    <!--订单未支付 state__1 state__0-->
+    <view class="order-state state__{{tempOrder.order_state.bg_color}} mb-20">
+      <image class="state-bg" src="images/state_bg.png"></image>
+      <view class="state-info">
+        <image class="state-icon" src="images/{{tempOrder.order_state.icon}}.png"
+               style="{{tempOrder.order_state.icon == 'success' ? 'height:78rpx' : ''}}"></image>
+        <view class="state-text">
+          <view class="state-title">{{tempOrder.order_state.title}}</view>
+          <view class="state-desc">{{tempOrder.order_state.desc}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="order-address order-data mb-20" wx:if="{{info.order.address != ''}}">
+      <image src='../../../images/img_icon/address_red.png'></image>
+      <view class='address-info'>
+        <view class='add-text'>{{info.order.address}}</view>
+        <view class='add-user'>
+          <text>{{info.order.order_membername}}</text>
+          <text>{{info.order.order_membertel}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="order-data mb-20">
+      <view class="order-store">{{info.store.store_name}}</view>
+      <view class="data-dl"><text class="dt">订单号: </text><text class="dd">{{info.order.order_sn}}</text></view>
+      <block wx:if="{{info.order.delivery_period}}">
+        <view class="data-dl"><text class="dt">配送时间: </text><text class="dd">{{info.order.delivery_period}}</text></view>
+      </block>
+      <block wx:if="{{info.order.pend_num_id > 0}}">
+        <view class="data-dl"><text class="dt">桌位: </text><text class="dd">{{info.order.pend_name}}</text></view>
+        <view class="data-dl"><text class="dt">就餐方式: </text><text class="dd">{{info.order.pend_type == 0 ? '堂食' : '外带'}}</text></view>
+        <view class="data-dl"><text class="dt">就餐人数: </text><text class="dd">{{info.order.pend_member_num}}人</text></view>
+      </block>
+      <view class="data-dl"><text class="dt">下单时间: </text><text class="dd">{{filter.formatTime(info.order.create_time)}}</text></view>
+      <view class="data-dl"><text class="dt">支付方式: </text><text class="dd">{{info.order.pay_name}}</text></view>
+      <view class="data-dl"><text class="dt">备注: </text><text class="dd">{{info.order.order_msg}}</text></view>
+    </view>
+    <view class="order-goods mb-20">
+      <view class="total">共{{info.order.totalnum}}件商品</view>
+      <view class="list-ul">
+        <view class="list-li" wx:for="{{info.goods}}" wx:key="{{index}}">
+          <image src="{{item.img}}"></image>
+          <view class="goods-text">
+            <view class="goods-name line-one">{{item.goods_name}}</view>
+            <view class="goods-num">x{{item.gou_num}}</view>
+          </view>
+          <view class="goods-price">￥{{item.goods_price}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="price-account">
+      <view class="price-old">
+        <view wx:if="{{info.order.goods_totalprice > 0}}">
+          <text>商品金额: </text><text class="fr">￥{{info.order.goods_totalprice}}</text>
+        </view>
+        <view wx:if="{{info.order.postage > 0}}">
+          <text>配送费: </text><text class="fr">￥{{info.order.postage}}</text>
+        </view>
+        <view wx:if="{{info.order.mj_price > 0}}">
+          <text>满减: </text><text class="fr">-￥{{info.order.mj_price}}</text>
+        </view>
+        <view wx:if="{{info.order.coupons_exmoney > 0}}">
+          <text>优惠券: </text><text class="fr">-￥{{info.order.coupons_exmoney}}</text>
+        </view>
+        <view wx:if="{{info.order.balance > 0}}">
+          <text>店铺余额: </text><text class="fr">-￥{{info.order.balance}}</text>
+        </view>
+        <view wx:if="{{info.order.credits_exmoney > 0}}">
+          <text>店铺积分: </text><text class="fr">-￥{{info.order.credits_exmoney}}</text>
+        </view>
+        <view wx:if="{{info.order.platform_coupons_money > 0}}">
+          <text>平台优惠券: </text><text class="fr">-￥{{info.order.platform_coupons_money}}</text>
+        </view>
+        <view wx:if="{{info.order.platform_balance > 0}}">
+          <text>平台余额: </text><text class="fr">-￥{{info.order.platform_balance}}</text>
+        </view>
+        <view wx:if="{{info.order.platform_credits_exmoney > 0}}">
+          <text>平台积分: </text><text class="fr">-￥{{info.order.platform_credits_exmoney}}</text>
+        </view>
+        <view wx:if="{{info.order.thirdpart_momey > 0}}">
+          <text>第三方余额: </text><text class="fr">-￥{{info.order.thirdpart_momey}}</text>
+        </view>
+      </view>
+      <view class="price-result">
+        <text class="price-t">需付款:</text>
+        <text class="price-n">￥{{info.order.totalprice}}</text>
+      </view>
+    </view>
+    <view class="order-foot" wx:if="{{info.order.order_state == 6}}">
+      <view class="foot-h"></view>
+      <view class="foot-content">
+        <block wx:if="{{info.order.order_state == 6 && info.order.cancel_nopay == 0}}">
+          <view class="c-left" bindtap='cancelOrder'>取消订单</view>
+          <view class="c-right" bindtap='payNow'>立即支付</view>
+        </block>
+        <block wx:else>
+          <view class="c-left" bindtap="delOrder">删除订单</view>
+          <view class="c-right" bindtap="createOrder">再来一单</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!--1、支付方式弹框、调取微信支付接口-->
+  <view>
+    <component-payment
+        id="payment"
+        order-data="{{info.order}}"
+        pay-method="{{payMethod}}"
+        parent-type="orderinfo" bindmyevent="getOrderInfo"></component-payment>
+  </view>
+</view>

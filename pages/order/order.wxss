@@ -1,0 +1,99 @@
+/*page/order/order.wxss*/
+.padding-b{
+  padding:0 30rpx;
+  background: #fff;
+}
+.padding-b .padding-c{
+  padding:30rpx 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 28rpx;
+  position: relative;
+}
+.padding-b .padding-c:last-child{border-bottom: none}
+.padding-b .padding-c .fr{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  min-width: 100rpx;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.padding-b .padding-c text{
+  vertical-align: middle
+}
+.order-goods{
+  background: #fff;
+  padding: 20rpx 30rpx 25rpx 30rpx;
+}
+.order-goods .total{
+  color: #333333;
+  font-size: 26rpx;
+  padding: 10rpx 0;
+  margin-bottom: 6rpx;
+}
+.order-goods .list-li{
+  display: flex;
+  padding: 15rpx 0;
+  align-items: center;
+  position: relative;
+}
+.order-goods .list-li image{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 10rpx;
+}
+.order-goods .list-li  .goods-text{
+  width: calc(100% - 200rpx);
+  padding-left: 20rpx;
+}
+.order-goods .list-li .goods-name{
+  color: #000000;
+  font-size: 26rpx;
+  margin-bottom: 20rpx
+}
+.order-goods .list-li .goods-num{
+  color: #999999;
+  font-size: 28rpx;
+}
+.order-goods .list-li .goods-price{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 28rpx;
+}
+.order-foot .foot-h{
+  height: 100rpx;
+  display: inline-block;
+  width: 100%;
+}
+.order-foot .foot-content{
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  border-top: 1px solid #f0f0f0;
+}
+.order-foot .foot-content .c-left{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  float: left;
+}
+.order-foot .foot-content .c-right{
+   vertical-align: middle;
+   float: left;
+   line-height: 100rpx;
+   color: #fff;
+   font-size: 30rpx;
+   text-align: center;
+ }

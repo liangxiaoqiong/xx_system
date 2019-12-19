@@ -1,0 +1,71 @@
+<!--components/classify/ad-banner/ad-banner.wxml-->
+<block wx:if="{{bannerData.isShow == 1}}">
+  <view class="ad-banner-swiper">
+    <!--region 悬浮式-->
+    <view class="swiper_style__{{bannerData.img_module[0].swiper_style}}" wx:if="{{bannerData.img_module[0].swiper_style == 1}}"
+          style="height:{{bannerData.bannerHeight}}px">
+      <view class="swiper-bg">
+        <image
+            wx:if="{{currentSwiperItem && currentSwiperItem.swiper_bg_style == 0}}"
+            class="bg-img-color"
+            src="{{currentSwiperItem.img_url}}"
+            mode="widthFix"></image>
+        <view
+            wx:if="{{currentSwiperItem && currentSwiperItem.swiper_bg_style == 1}}"
+            class="bg-img-color" style="background-color: {{currentSwiperItem.swiper_bg_color}}"></view>
+      </view>
+      <swiper
+          class="float-container"
+          indicator-dots=""
+          circular="true"
+          autoplay="true"
+          interval="{{bannerData.img_module[0].swiper_autoplay}}"
+          duration="500"
+          next-margin="60rpx"
+          previous-margin="60rpx"
+          bindchange="swiperChange">
+        <block wx:for="{{bannerData.img_list}}" wx:key="*this">
+          <swiper-item>
+            <view class='li'>
+              <view class='li-container {{index == currentIndex ? "active" : ""}}'>
+                <image
+                    src="{{item.img_url}}"
+                    data-item="{{item}}"
+                    bindtap="swiperLink"></image>
+              </view>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!--endregion-->
+
+    <!--region 平铺式-->
+    <swiper
+        wx:if="{{bannerData.img_module[0].swiper_style == 0}}"
+        indicator-dots=""
+        circular="true"
+        autoplay="true"
+        interval="{{bannerData.img_module[0].swiper_autoplay}}"
+        duration="500"
+        style="height:{{bannerData.bannerHeight}}px"
+        bindchange="swiperChange">
+      <block wx:for="{{bannerData.img_list}}" wx:key="*this">
+        <swiper-item>
+          <image
+              src="{{item.img_url}}"
+              style="height:{{bannerData.bannerHeight}}px"
+              data-item="{{item}}"
+              bindtap="swiperLink"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!--endregion-->
+    <view class="indication btn_style__{{bannerData.img_module[0].btn_style}} btn_position__{{bannerData.img_module[0].btn_position}}">
+      <block wx:for="{{bannerData.img_list}}" wx:key="imgList">
+        <view class="spot" style="{{index == currentIndex ? 'background-color:'+bannerData.img_module[0].btn_color : ''}}"></view>
+      </block>
+    </view>
+
+  </view>
+</block>

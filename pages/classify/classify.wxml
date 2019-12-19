@@ -1,0 +1,174 @@
+<!--客服悬浮按钮-->
+<import src="../common/customer-service.wxml" />
+
+<!--页面内容-->
+<view class="container">
+  <view class="page-body page-classify">
+    <template is="customer-service"/><!--客服悬浮按钮-->
+    <component-skeleton-classify wx:if="{{showSkeleton}}"><!--骨架屏组件--></component-skeleton-classify>
+
+    <view class="search-temp">
+      <block wx:if="{{userInfo === ''}}">
+        <view bindtap="showLoginLayer" class="login-false">
+          <image src="/images/img_common/user_logo.png"></image>
+          <text class="login-btn">登录</text>
+        </view>
+      </block>
+      <block wx:else>
+        <navigator class="link-order" url="/pages/user/user">
+          <image src="{{userInfo.avatarUrl}}"></image>
+          <text class="line-one">{{userInfo.nickName}}</text>
+        </navigator>
+      </block>
+      <navigator class="search-input" url="/pages/search/search">
+        <view class="input-view">
+          <icon class="myicon-search_grey"></icon>
+          <text>请输入想要找的商品</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="classify-body">
+      <view style="height:{{bannerData.bannerHeight}}px"><component-ad-banner id="adBanner"></component-ad-banner></view>
+      <view class="classify-content" style="height: {{bannerData.contentHeight}}">
+        <!--左侧菜单分类-->
+        <scroll-view scroll-y="true" class="classify-menu">
+          <!--region 一级分类 start-->
+          <view class="menu-list menu-one {{ query.gc_id == -2 ? 'active' : '' }}"
+                data-type="0"
+                data-gcid="-2"
+                data-gckey1="-1"
+                bindtap="changeClassify">
+            <view class="menu-view"><text>全部分类</text></view>
+          </view>
+          <block wx:for="{{classifyData.classifyList}}" wx:key-for="" wx:for-index="key1" wx:key="{{key1}}">
+            <view
+                class="menu-list menu-one {{[query.gc_id == item.gc_id ? 'active' : '']}}">
+              <view class="menu-view"
+                    data-gcid="{{item.gc_id}}"
+                    data-type="0"
+                    data-gckey1="{{key1}}"
+                    catchtap="changeClassify">
+                <text>{{item.gc_name}}</text>
+              </view>
+              <!--region 二级分类 start-->
+              <view class="menu-ul" wx:if="{{item.list.length > 0}}" hidden="{{!item.isOpen}}">
+                <block wx:for="{{item.list}}" wx:for-item="gcTwo" wx:for-index="key2" wx:key="{{key2}}">
+                  <view class="menu-list menu-two {{ [query.gc_id == gcTwo.gc_id ? 'active' : ''] }}">
+                    <view class="menu-view"
+                          data-gcid="{{gcTwo.gc_id}}"
+                          data-type="1"
+                          data-gckey1="{{key1}}"
+                          data-gckey2="{{key2}}"
+                          catchtap="changeClassify">
+                      <text>{{gcTwo.gc_name}}</text>
+                    </view>
+                    <!--region 三级分类 start-->
+                    <view class="menu-ul" wx:if="{{gcTwo.list.length > 0}}" hidden="{{!gcTwo.isOpen}}">
+                      <block wx:for="{{gcTwo.list}}" wx:for-item="gcThree" wx:for-index="key3" wx:key="{{key3}}">
+                        <view class="menu-list menu-three {{ query.gc_id == gcThree.gc_id ? 'active' : '' }}">
+                          <view class="menu-view"
+                                data-gcid="{{gcThree.gc_id}}"
+                                data-type="2"
+                                data-gckey1="{{key1}}"
+                                data-gckey2="{{key2}}"
+                                data-gckey3="{{key3}}"
+                                catchtap="changeClassify">
+                            <text>{{gcThree.gc_name}}</text>
+                          </view>
+                        </view>
+                      </block>
+                    </view>
+                    <!--endregion 三级分类 end-->
+                  </view>
+                </block>
+              </view>
+              <!--endregion 二级分类 end-->
+            </view>
+          </block>
+          <view class="menu-list menu-one {{ query.gc_id == -1 ? 'active' : '' }}"
+                wx:if="{{classifyData.is_no_classify == 1}}"
+                data-type="0"
+                data-gcid="-1"
+                data-gckey1="-1"
+                catchtap="changeClassify">
+            <view class="menu-view"><text>未分类</text></view>
+          </view>
+          <!--endregion 一级分类 end-->
+        </scroll-view>
+        <!--右侧商品列表-->
+        <view class="classify-right">
+          <view class="search-bar {{temp.isShowFilterLayer ? 'bar-fixed' : ''}}">
+            <view class="search-bar-h"><!--占位符--></view>
+
+            <view class="search-bar-c" style="top:{{temp.isShowFilterLayer ? bannerData.bannerHeight : 0 }}px">
+              <view class="search-type">
+                <view class="type-item {{query.gc_sort == '' ? 'style-text-color' : ''}}" data-type="" bindtap="setSort">
+                  <text>综合</text>
+                </view>
+                <view class="type-item {{query.gc_sort == 'sale_desc' ? 'style-text-color' : ''}}" data-type="sale" bindtap="setSort">
+                  <text>销量</text>
+                </view>
+                <view class="type-item" data-type="price" bindtap="setSort">
+                  <text>价格</text>
+                  <view class="type-icon {{query.gc_sort == 'price_asc' ? 'myicon-sort_asc' : (query.gc_sort == 'price_desc' ? 'myicon-sort_desc' : 'myicon-sort_normal')}}">
+                    <icon class="path1"></icon>
+                    <icon class="path2"></icon>
+                  </view>
+                </view>
+                <view class="type-item" bindtap="filterSearchLayer">
+                  <text class="{{query.goods_tag.length > 0 ? 'style-text-color' : ''}}">筛选</text>
+                  <view class="type-icon">
+                    <icon class="myicon-screen {{query.goods_tag.length > 0 ? 'active' : ''}}"></icon>
+                  </view>
+                </view>
+              </view>
+              <!--筛选弹框-->
+              <view class="filter-body" hidden="{{!temp.isShowFilterLayer}}">
+                  <view class="filter-list">
+                    <!--系统标签、商品标签-->
+                    <block wx:for="{{tagList}}" wx:key="{{index}}">
+                      <text class="{{item.checked ? 'active' : ''}}"
+                            data-tagid="{{item.tag_id}}" data-itemkey="{{index}}" bindtap="changeTag">{{item.tag_name}}</text>
+                    </block>
+                  </view>
+                  <view class="filter-foot">
+                    <view class="f-left" bindtap="resetFilterSearch">重置</view>
+                    <view class="f-right" bindtap="filterSearchLayer">完成</view>
+                  </view>
+                </view>
+            </view>
+            <view class="layer-model" bindtap="filterSearchLayer" hidden="{{!temp.isShowFilterLayer}}"><!--遮盖层--></view>
+          </view>
+          <scroll-view class="scroll-goods" scroll-y="true" lower-threshold="1000" bindscrolltolower="moreGoods">
+            <view class="goods-list" wx:if="{{classifyGoods.total > 0}}">
+              <block wx:for="{{classifyGoods.list}}" wx:key="{{index}}">
+                <component-goods-item
+                    id="goods-item__{{item.goods_id}}"
+                    user-info="{{userInfo}}"
+                    goods-item="{{item}}"
+                    bindlogin="showLoginLayer"
+                    bindspeclayer="syncSpecLayer"
+                    bindspecminuslayer="syncSpecMinusLayer"
+                    bind:syncnum="syncCartNum"></component-goods-item>
+              </block>
+              <view class="in-end" wx:if="{{classifyGoods.total > 0 && !load.hasMore}}">已经到底啦~~</view>
+              <view class="in-end" wx:if="{{load.hasMore}}">加载中~~</view>
+            </view>
+            <view class="in-end" wx:if="{{classifyGoods.total <= 0 && !load.isBusy}}">当前暂无商品哦~~</view>
+            <view class="in-end" wx:if="{{classifyGoods.total <= 0 && load.isBusy}}">加载中~~</view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+    <view>
+      <!--底部购物车-->
+      <component-foot-cart id="footCart" bindmyevent="cartToPage" bindlogin="showLoginLayer"></component-foot-cart>
+      <!--多规格弹框-->
+      <component-spec-layer id="spec-layer" bind:syncnum="syncCartNum"></component-spec-layer>
+      <!--多规格减减弹框-->
+      <component-spec-minus-layer id="spec-minus-layer" bind:syncnum="syncCartNum"></component-spec-minus-layer>
+      <!--登录弹框-->
+      <component-login-layer id="login-layer" bindlogincomplete="refreshPage"></component-login-layer>
+    </view>
+  </view>
+</view>

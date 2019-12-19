@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "nav-top-bar": "/components/nav-top-bar/nav-top-bar",
+    "component-foot-cart": "/components/foot-cart/foot-cart",
+    "component-spec-layer": "/components/spec-layer/spec-layer",
+    "component-spec-minus-layer": "/components/spec-minus-layer/spec-minus-layer",
+    "component-login-layer": "/components/login/login-layer/login-layer",
+    "component-buy-num-layer": "/components/goods-info/buy-num-layer/buy-num-layer",
+    "goods-info-price0": "/components/goods-info/goods-info-price0/goods-info-price0",
+    "chains-list-item": "/components/chains-list/chains-list-item/chains-list-item",
+    "chains-list-layer": "/components/chains-list/chains-list-layer/chains-list-layer",
+    "chains-card-layer": "/components/chains-list/chains-card-layer/chains-card-layer"
+  }
+}

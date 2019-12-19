@@ -1,0 +1,26 @@
+<!--components/nav-top-bar/nav-top-bar.wxml【自定义顶部栏】-->
+<view class="navTopBar" style='height: {{heightNav}}px;padding-top: {{statusBarHeight}}px'>
+  <view style="position: relative">
+    <!--// 导航栏 中间的标题-->
+    <view style='height: {{titleBarHeight}}px;display: flex; justify-content: space-around;flex-direction: column;' wx:show='{{showCapsule == 1}}'>
+      <block wx:if="{{customData.pageSource == 'share'}}">
+        <!--从别人分享页进入-->
+        <view class="capsule-back" bindtap='_backhome'>
+          <image src='/images/img_icon/nav_top_home.png' mode='aspectFill' class='back-pre'></image>
+        </view>
+      </block>
+      <block wx:else>
+        <!--// 导航栏  左上角的返回按钮 和home按钮-->
+        <view class='nav-capsule' style='height: 32px;'>
+          <view class="nav-btn" bindtap='_navback'>
+            <image src='/images/img_icon/nav_top_back.png' mode='aspectFill' class='back-pre'></image>
+          </view>
+          <!--<view class="nav-btn" bindtap='_backhome'>
+            <image src='/images/img_icon/nav_top_home.png' mode='aspectFill' class='back-home'></image>
+          </view>-->
+        </view>
+      </block>
+    </view>
+    <view class='nav-title' style='line-height: {{titleBarHeight}}px;'>{{customData.title}}</view>
+  </view>
+</view>

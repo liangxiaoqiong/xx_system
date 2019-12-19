@@ -1,0 +1,48 @@
+/* components/chains-list/chains-list-item/chains-list-item.wxss */
+
+.chains-list-li {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15rpx 40rpx;
+}
+.chains-list-li .li-left {
+  width: calc(100% - 230rpx);
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+}
+.chains-list-li .li-left .chains-index {
+  color: #333333;
+  font-size: 24rpx;
+  margin-right:10rpx;
+
+}
+.chains-list-li .li-left .user-img {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 100%;
+}
+.chains-list-li .li-left .user-name {
+  max-width: 120rpx;
+  margin: 0 10rpx;
+  color: #333333;
+  font-size: 24rpx;
+}
+.chains-list-li .li-left .chains-time {
+  color: #999999;
+  font-size: 22rpx;
+}
+.chains-list-li .li-right {
+  width: 230rpx;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #333333;
+  font-size: 24rpx;
+}
+.chains-list-li .li-right .goods-spec {
+  max-width: calc(100% - 40rpx);
+}

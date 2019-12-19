@@ -1,0 +1,116 @@
+/* components/classify/ad-banner/ad-banner.wxss */
+.ad-banner-swiper {
+  position: relative;
+}
+swiper-item image {
+  width: 100%;
+  height: 100%;
+}
+/*region 悬浮式*/
+.swiper_style__1 .float-container {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding:10px 0;
+  box-sizing:border-box;
+}
+.swiper_style__1 .swiper-bg {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  height: 50%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+.swiper_style__1 .swiper-bg .bg-img-color {
+  width: 100%;
+  height: 100%;
+}
+.swiper_style__1 .swiper-bg image.bg-img-color {
+  -webkit-filter: blur(2.5px); /* Chrome, Opera */
+  -moz-filter: blur(2.5px);
+  -ms-filter: blur(2.5px);
+  filter: blur(2.5px);
+}
+.swiper_style__1 .swiper-bg::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url("http://m.duinin.com/Public/common/img/gradient_bg.png") center center no-repeat;
+  background-size: 100% 100%;
+  content: '';
+}
+.swiper_style__1 swiper-item {
+  overflow: initial;
+}
+.swiper_style__1 .li{
+  width: 100%;
+  height: 100%;
+}
+.swiper_style__1 .li .li-container{
+  margin: 0 auto;
+  transform: scale(0.9);
+  height: 100%;
+  border-radius: 10px;
+}
+.swiper_style__1 .li .li-container.active{
+  transform: scale(1)
+}
+.swiper_style__1 .li .li-container image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.swiper_style__1 .li .li-container.active image{
+  box-shadow: 0px 5px 14px 0px rgba(202, 202, 202, 0.5);
+}
+  /*endregion*/
+
+/*region 自定义轮播指示点样式 */
+.indication{
+  width: 100%;
+  height: 36rpx;
+  position: absolute;
+  bottom: 20rpx;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  padding: 0 60rpx;
+  z-index: 10;
+}
+.spot{
+  width: 16rpx;
+  height: 16rpx;
+  margin: 0 12rpx;
+  background-color: #fff;
+}
+.spot.active{
+  background-color: #fe3434;
+}
+.indication.btn_style__0 .spot {
+  width: 16rpx;
+  height: 8rpx;
+}
+.indication.btn_style__2 .spot {
+  border-radius: 100%;
+}
+.indication.btn_position__0 {
+  justify-content:flex-start;
+}
+.indication.btn_position__2 {
+  justify-content:flex-end;
+}
+/*endregion*/

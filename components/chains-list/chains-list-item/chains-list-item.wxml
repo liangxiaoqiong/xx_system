@@ -1,0 +1,13 @@
+<!--components/chains-list/chains-list-item/chains-list-item.wxml-->
+<view class="chains-list-li">
+  <view class="li-left">
+    <view class="chains-index">{{ key }}.</view>
+    <image class="user-img" src="{{ chains.member_avatar }}"></image>
+    <view class="user-name line-one">{{ chains.member_name }}</view>
+    <view class="chains-time">{{ chains.create_time_text }}</view>
+  </view>
+  <view class="li-right">
+    <text class="goods-spec line-one" wx:if="{{chains.spec_name != null}}">{{ chains.spec_name }}</text>
+    <text class="goods-num">+{{ chains.gou_num }}</text>
+  </view>
+</view>

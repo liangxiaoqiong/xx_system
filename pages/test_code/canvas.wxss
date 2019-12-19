@@ -1,0 +1,4 @@
+/* pages/test_code/canvas.wxss */
+page {
+  background-color: #fff;
+}

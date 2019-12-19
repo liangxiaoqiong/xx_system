@@ -1,0 +1,55 @@
+<!--components/goods-item/goods-item.wxml-->
+<view>
+  <view class="list-item" catchtap="linkGoodsInfo">
+    <image src="{{goodsItem.main_img}}?_300x300x2" class="list-img" catchtap="linkGoodsInfo"></image>
+    <view class="list-text">
+      <view class="line-two goods-name">{{goodsItem.goods_name}}</view>
+      <view class="line-one goods-spec"
+            wx:if="{{storeData.price_is_hide == 0 && goodsItem.spec_string !== ''}}">
+        {{goodsItem.spec_string}}
+      </view>
+      <view class="goods-icon">
+        <icon class="goods-type-re" wx:if="{{goodsItem.is_hot == 1}}"></icon>
+        <icon class="goods-type-jiang" wx:if="{{goodsItem.state == 1 || goodsItem.is_promote == 1}}"></icon>
+        <icon class="goods-type-qiang" wx:if="{{goodsItem.state === 2 || goodsItem.is_qianggou == 1}}"></icon>
+        <icon class="goods-type-vip" wx:if="{{goodsItem.vip_level > 0}}"></icon>
+        <icon class="goods-type-mj" wx:if="{{goodsItem.mj_flag == 1}}"></icon>
+        <icon class="goods-type-yushou" wx:if="{{goodsItem.is_booking == 1}}"></icon>
+        <icon class="goods-type-zp" wx:if="{{goodsItem.send_gift_ctrl == 1}}">赠</icon>
+      </view>
+      <view class="goods-price">
+        <block wx:if="{{storeData.price_is_hide == 0}}">
+          <view class="price-new">
+            <block wx:if="{{storeData.credits_model == 1 && goodsItem.credits_limit > 0}}">
+              {{goodsItem.credits_limit}}积分+￥{{ goodsItem.new_price }}
+            </block>
+            <block wx:else>
+              ￥{{goodsItem.state > 0 ? goodsItem.new_price : goodsItem.goods_price}}
+            </block>
+          </view>
+          <view class="price-old" wx:if="{{goodsItem.new_price != goodsItem.goods_price}}">￥{{goodsItem.goods_price}}</view>
+        </block>
+        <!--隐藏价格说明-->
+        <block wx:else>{{storeData.price_hide_desc}}</block>
+      </view>
+    </view>
+
+    <view class="cart-num-view" wx:if="{{storeData.price_is_hide == 0}}">
+      <!--无库存，已售罄-->
+      <block wx:if="{{goodsItem.goods_storage == 0}}">
+        <text class="no-storage">已售罄</text>
+      </block>
+      <block wx:else>
+        <block wx:if="{{goodsItem.buy_num > 0}}">
+          <view class="cart-num-icon" data-type="minus" catchtap="goodsNumAction">
+            <icon class="myicon-minus"></icon>
+          </view>
+          <text>{{goodsItem.buy_num}}</text>
+        </block>
+        <view class="cart-num-icon" data-type="add" catchtap="goodsNumAction">
+          <icon class="myicon-add"></icon>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <view class="page-body">
+    <view class="user-head flex-row">
+      <image src="{{userInfo.avatarUrl}}" class="user-img"></image>
+      <view class="user-text">
+        <view class="user-nickname">{{userInfo.nickName}}</view>
+        <view class="user-id">{{userInfo.member_name}}</view>
+      </view>
+    </view>
+    <view class="user-tool">
+      <navigator class="li" url="/pages/order/order-list/order-list">
+        <image src="/images/user/tool_order.png"></image>
+        <text>我的订单</text>
+      </navigator>
+      <navigator class="li tool-coupon" url="/pages/coupon/coupon">
+        <image src="/images/user/tool_coupon.png"></image>
+        <text>我的优惠券</text>
+      </navigator>
+      <navigator class="li" url="/pages/credit/credit">
+        <image src="/images/user/tool_coupon.png"></image>
+        <text>我的积分</text>
+      </navigator>
+      <navigator class="li" url="/pages/balance/balance">
+        <image src="/images/user/tool_balance.png"></image>
+        <text>我的余额</text>
+      </navigator>
+      <navigator class="li tool-recharge" url="/pages/recharge/recharge" wx:if="{{storeData.balance_recharge_ctrl == 1}}">
+        <image src="/images/user/tool_recharge.png"></image>
+        <text>在线充值</text>
+      </navigator>
+      <navigator class="li" url="/pages/address/address-list/address-list" wx:if="{{psWay == 1}}">
+        <image src="/images/user/tool_address.png"></image>
+        <text>收货地址</text>
+      </navigator>
+    </view>
+  </view>
+</view>

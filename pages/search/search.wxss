@@ -1,0 +1,79 @@
+/*pages/search/search.wxss*/
+.search-head{
+  background-color: #fff;
+  vertical-align: middle;
+  margin-bottom: 10rpx;
+  display: inline-block;
+  width: 100%;
+  height: 100rpx;
+}
+.search-head .search-content{
+  width: calc(100% - 94rpx);
+  display: inline-block;
+  float: left;
+  position: relative;
+  padding: 20rpx 0 20rpx 20rpx;
+}
+.search-content .clear-input{
+  position: absolute;
+  z-index: 1;
+  top: 20rpx;
+  right: 0;
+  width: 56rpx;
+  height: 56rpx;
+  background:  url("http://m.duinin.com/Public/common/img/close_white.png")center center no-repeat;
+  background-size: 25rpx;
+  opacity: .6
+}
+.search-content input{
+  width: 100%;
+  height: 56rpx;
+  background-color: #f4f4f4;
+  border-radius: 28rpx;
+  font-size: 26rpx;
+  padding: 0 60rpx 0 70rpx;
+  background: #f6f6f6 url("http://m.duinin.com/Public/wap2/img/common/searchGrey2.png")30rpx center no-repeat;
+  background-size: 25rpx;
+  box-sizing: border-box
+}
+.search-head .search-btn{
+  width: 94rpx;
+  display: inline-block;
+  float: left;
+  color: #f82e2e;
+  font-size: 26rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+}
+.hot-search{
+  background-color: #fff;
+}
+.hot-search .title{
+  border-bottom: 1px solid #f0f0f0;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  color: #999999;
+  font-size: 26rpx;
+  height: 80rpx
+}
+.hot-search scroll-view{
+  max-height: calc(100% - 300rpx);
+}
+.hot-search .hot-list{
+  padding:20rpx 30rpx;
+}
+.hot-search .hot-list>text{
+  padding: 4px 12px;
+  margin:12rpx 8rpx;
+  border-radius: 1rem;
+  background: #f1f2f4;
+  font-size: 14px;
+  color: #b4b7b9;
+  display: inline-block;
+}
+.search-goods{
+  max-height: calc(100% - 200rpx)
+}

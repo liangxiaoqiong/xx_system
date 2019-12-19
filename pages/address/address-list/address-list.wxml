@@ -1,0 +1,31 @@
+<!--pages/address/address-list/address-list.wxml 收货地址列表-->
+<view class="container">
+  <view class="page-body">
+    <scroll-view scroll-y="true" class="scroll-address" wx:if="{{loadCompeted}}">
+      <block wx:if="{{addressList.length > 0}}">
+        <view class="scroll-list" wx:for="{{addressList}}" wx:key="{{index}}"
+              data-addressid="{{item.address_id}}" bindtap="selectAddress">
+          <view class='address-default' wx:if="{{default_address_id == item.address_id}}">
+            <icon class='myicon-selected2'></icon>
+          </view>
+          <view class="address-info" style="{{default_address_id == item.address_id ? 'width: calc(100% - 150rpx)' : ''}}">
+            <view class="address">{{item.province}}{{item.city}}{{item.area}}{{item.address}}</view>
+            <view class="consignee">
+              <text>{{item.member_name}}</text>
+              <text>{{item.member_tel}}</text>
+            </view>
+          </view>
+          <view class="address-action" data-item="{{item}}" catchtap="linkAddressInfo">
+            <image class="edit-black" src="../../../images/img_icon/edit_black.png"></image>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="request-none"><image src="../../../images/img_common/none_default.png"></image></view>
+      </block>
+    </scroll-view>
+    <navigator class="address-foot" url="/pages/address/address-info/address-info">
+      +新增收货地址
+    </navigator>
+  </view>
+</view>

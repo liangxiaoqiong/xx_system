@@ -1,0 +1,121 @@
+/*page/order/cart-settlement.wxss*/
+@import '../order.wxss';
+.order-table .table-num{
+  color: #000000;
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 14rpx;
+}
+.order-table .store-name{color: #666666;font-size: 26rpx;}
+.radio-group__1 .radio{margin-left: 40rpx;}
+.p-coupon .coupon-tip{
+  border: 2rpx solid #f23a3a;
+  border-radius: 4rpx;
+  padding: 0 8rpx;
+  display: inline-block;
+  height: 30rpx;
+  line-height: 28rpx;
+  font-size: 20rpx;
+  margin-left: 16rpx;
+  color: #f23a3a;
+}
+.padding-c .label{
+  margin-right: 20rpx;
+}
+.padding-c .number{
+  font-size: 24rpx;
+}
+.padding-c .credit-warn{
+  margin-left: 16rpx;
+  margin-right: 6rpx;
+  color: rgb(216, 56, 56);
+}
+.padding-c .tip-icon{
+  margin-left: 10rpx;
+  display:inline-block;
+  width:60rpx;
+  vertical-align:middle;
+}
+.padding-c .tip-icon icon{
+  display:flex;
+  height:38rpx;
+  align-items:center;
+}
+.p-remark{
+  padding: 0!important;
+}
+.p-remark .remark-fr{
+  text-align: right;
+  width: calc(100% - 100rpx);
+  display: inline-block;
+  padding:30rpx 0;
+  vertical-align: middle;
+  z-index: 1;
+}
+.p-remark text{
+  display:inline-block;
+  width: 98rpx;
+}
+.meal-input{
+  text-align: center;
+  margin-top: 20rpx;
+}
+.meal-input input{
+  border: 1px solid #e0e0e0;
+  border-radius: 10rpx;
+  height: 40px;
+  width: 144rpx;
+  display: inline-block;
+  font-size: 32rpx;
+}
+.credit-rule-layer view{
+  margin: 10rpx 0;
+  color: #565656;
+  font-size: 26rpx;
+}
+.credit-balance-layer input{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+}
+
+.order-foot .foot-content .c-left{
+  width: calc(100% - 220rpx);
+  background: #333;
+  color: #fff;
+  padding: 0 30rpx;
+}
+.foot-content .c-left text{
+  vertical-align: middle;
+}
+.foot-content .c-left .left-t1{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.foot-content .c-left .left-t2{
+  font-size: 36rpx;
+  font-weight: bold;
+  margin: 0 15rpx;
+}
+.foot-content .c-left .left-t3{
+  font-size: 24rpx;
+}
+.order-foot .foot-content .c-right{
+  background-color: #f82e2e;
+  width: 220rpx;
+}
+.order-address-btn{
+  padding: 0 30rpx;
+	height: 70rpx;
+  line-height: 70rpx;
+  display: inline-block;
+	background-color: #fff6f6;
+	border-radius: 35rpx;
+	border: solid 2rpx #f82e2e;
+  color: #f82e2e;
+  font-size: 28rpx;
+  margin: 20rpx 0;
+}

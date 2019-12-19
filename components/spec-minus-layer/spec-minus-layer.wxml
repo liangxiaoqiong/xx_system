@@ -1,0 +1,41 @@
+<!--component-spec-minus-layer 减减弹框-->
+<view class="spec-minus-layer" wx:if="{{isShowMinusLayer && goodsItem.spec_option.length > 0}}">
+  <view class="layer-model" catchtap="hideSpecMinusLayer" catchtouchmove="true"></view>
+  <view class="layer-body-fixed" catchtap="{{false}}">
+    <view class="layer-head">
+      <view class="head-title">
+        <text class="title-name">{{goodsItem.goods_name}}</text>
+        <text class="title-tip">已选商品规格</text>
+      </view>
+      <view class="head-close" catchtap="hideSpecMinusLayer"><icon class="myicon-close"></icon></view>
+    </view>
+    <view class="layer-main">
+      <view class="cart-goods">
+        <!--region循环列表-->
+        <block wx:for="{{minusCart.items}}" wx:key="{{index}}">
+          <view class="goods-li" hidden="{{item.buy_num <= 0}}">
+            <view class="goods-info">
+              <view class='goods-name line-one'>{{item.spec_name_title}}</view>
+            </view>
+            <view class="price-num">
+              <text class='price'>￥{{item.new_price}}</text>
+              <view class="cart-num-view">
+                <view class="cart-num-icon" data-index="{{index}}" catchtap="minusNumAction">
+                  <icon class="myicon-minus"></icon>
+                </view>
+                <text>{{item.buy_num}}</text>
+                <view class="cart-num-icon">
+                  <icon class="myicon-add disabled"></icon>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!--endregion 循环列表-->
+      </view>
+    </view>
+    <view class="layer-foot">
+      <view class="submit-btn active" catchtap="submitSpecMinus">确定</view>
+    </view>
+  </view>
+</view>

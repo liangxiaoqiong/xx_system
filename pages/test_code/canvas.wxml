@@ -1,0 +1,12 @@
+<!--pages/test_code/canvas.wxml.用canvas画图、
+具体参考goods_info/goods_info.wxml
+接龙【写在组件中无法画图成功】【画布的图片有远程跨域的，需要先下载图片】
+-->
+<view class='more' bindtap='saveImageToPhotosAlbum'>保存图片</view>   <!--//保存图片按钮-->
+<canvas canvas-id='share' style='width:560px;height:820px;' hidden='{{canvasHidden}}'></canvas>
+<view>
+  <image src="{{shareImgPath}}" style='width:280px;height:410px;'></image>
+</view>
+<!--//这里的 canvas-id 后面要用的上。
+//style里的宽高要用上，不设置宽高画板会失效。
+//canvasHidden是控制画板显示隐藏的参数，画板直接设置display none，会导致失效。-->

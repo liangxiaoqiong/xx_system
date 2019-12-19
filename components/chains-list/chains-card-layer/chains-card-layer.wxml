@@ -1,0 +1,13 @@
+<!--components/chains-list/chains-card-layer/chains-card-layer.wxml-->
+<view class="chains-card-layer" wx:if="{{isShowLayer}}">
+  <view class="layer-model"></view>
+  <view class="card-layer">
+    <view class="card-layer-main" style="max-height: {{layerHeight}}px">
+      <image src="{{cardImg}}" mode="widthFix" bindlongpress="saveImageToPhotosAlbum"></image>
+    </view>
+    <view class="layer-bottom-close">
+      <view class="foot-tip">长按图片保存到手机</view>
+      <view class="myicon-close-white" bindtap="hideLayer"></view>
+    </view>
+  </view>
+</view>

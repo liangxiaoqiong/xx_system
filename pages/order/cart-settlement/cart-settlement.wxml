@@ -1,0 +1,309 @@
+<!--page/order/cart-settlement.wxml-->
+<wxs src="../../../utils/filter.wxs" module="filter" />
+<view class="container">
+  <view class="page-body" wx:if="{{loadCompeted}}">
+    <!--region 循环店铺 start-->
+    <view class="settlement-shop">
+      <view wx:for="{{orderData.storeInfoArray}}" wx:for-item="orderStore" wx:key="{{index}}">
+
+        <!--region 堂食 start-->
+        <view class="padding-b mb-20" wx:if="{{queryOrder.psWay == 3}}">
+          <view class="padding-c order-table">
+            <view class="table-num link-r" bindtap="showPendLayer">
+              <block wx:if="{{queryOrder.pend_num_id == ''}}">请选择桌位</block>
+              <block wx:else>桌位:{{queryOrder.pend_name}}</block>
+            </view>
+            <view class="store-name">{{storeData.store_name}}</view>
+          </view>
+          <view class="padding-c">
+            <text>就餐方式</text>
+            <view class="fr">
+              <radio-group class="radio-group__1" bindchange="changePendType">
+                <label class="radio">
+                  <radio value="0" checked="{{queryOrder.pend_type == 0}}"/>
+                  <text>堂食</text>
+                </label>
+                <label class="radio">
+                  <radio value="1" checked="{{queryOrder.pend_type == 1}}"/>
+                  <text>打包</text>
+                </label>
+              </radio-group>
+            </view>
+          </view>
+          <view class="padding-c" bindtap="showMealNum">
+            <text>就餐人数</text>
+            <text class="fr link-r">{{queryOrder.pend_member_num}}</text>
+          </view>
+        </view>
+        <!--endregion 堂食 end-->
+
+        <!--region 外卖、商家配送 start-->
+        <view class="padding-b mb-20" wx:if="{{queryOrder.psWay == 1}}">
+          <view class="padding-c order-table" bindtap="changeAddress" wx:if="{{orderData.addressData.address_id != undefined}}">
+            <view class="table-num link-r">
+              {{orderData.addressData.country}}{{orderData.addressData.province}}{{orderData.addressData.city}}{{orderData.addressData.area}}{{orderData.addressData.address}}
+            </view>
+            <view class="store-name">
+              <text>{{orderData.addressData.member_name}}</text>
+              <text>{{orderData.addressData.member_tel}}</text>
+            </view>
+          </view>
+          <view class='padding-c text-center' bindtap="changeAddress" wx:else>
+            <view class='order-address-btn'>+请选择收货地址</view>
+          </view>
+          <view class="padding-c"
+                data-delivery="{{orderStore.delivery_content}}"
+                data-storeid="{{orderStore.store_id}}"
+                bindtap="showDeliveryLayer"
+                wx:if="{{orderStore.delivery_switch == 1}}">
+            <text>送达时间</text>
+            <text class="fr link-r">{{queryOrder.store[orderStore.store_id].delivery_type}}</text>
+          </view>
+        </view>
+        <!--endregion 外卖、商家配送 end-->
+
+        <view class="order-goods mb-20">
+          <view class="total">共{{orderStore.order_content.length}}件商品</view>
+          <view class="list-ul">
+            <view class="list-li"
+                  wx:for="{{orderStore.order_content}}" wx:for-item="storeGoods" wx:key="{{index}}">
+              <image src="{{storeGoods.main_img}}"></image>
+              <view class="goods-text">
+                <view class="goods-name line-one">{{storeGoods.goods_name}}</view>
+                <view class="goods-num">x{{storeGoods.buy_num}}</view>
+              </view>
+              <view class="goods-price">￥{{storeGoods.goods_price}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="padding-b mb-20">
+          <!--region 外卖、商家配送-->
+          <view class="padding-c"
+                wx:if="{{queryOrder.psWay == 1}}">
+            <text>配送费</text>
+            <view class="fr">￥{{queryOrder.store[orderStore.store_id].freight_result}}</view>
+          </view>
+          <!--endregion 外卖、商家配送-->
+          <view class="padding-c"
+                wx:if="{{orderStore.mj_price > 0}}">
+            <text>满减</text>
+            <view class="fr"><text>活动满减</text><text class="style-text-color">-￥{{orderStore.mj_price}}</text></view>
+          </view>
+
+          <block wx:if="{{orderStore.storeMemberCoupons.use.length > 0}}">
+            <view class="padding-c p-coupon"
+                  data-type="store" data-item="{{orderStore.storeMemberCoupons.use}}" data-storeid="{{orderStore.store_id}}"
+                  bindtap="showCoupon">
+              <view class="p-left">
+                <text>优惠券</text>
+                <text class="coupon-tip">已选{{queryOrder.store[orderStore.store_id].coupon.id ? 1 : 0}}张</text>
+              </view>
+
+              <block>
+                <view class="fr link-r"
+                      wx:if="{{queryOrder.store[orderStore.store_id].coupon.id}}">
+                  -￥{{filter.toFixed_2(queryOrder.store[orderStore.store_id].coupon_money)}}
+                </view>
+                <view class="fr link-r" style="color: #999" wx:else>请选择优惠券</view>
+              </block>
+            </view>
+          </block>
+
+          <view class="padding-c"
+                wx:if="{{orderStore.balancepay == 1 && orderStore.balance > 0}}">
+            <view>
+              <text class="label">店铺余额</text>
+              <text class="number">共{{orderStore.balance}}元</text>
+            </view>
+            <view
+                class="fr link-r"
+                data-type="2"
+                data-item="{{orderStore}}"
+                bindtap="showCreditBalanceLayer">
+              -{{queryOrder.store[orderStore.store_id].balance == '' ? 0: filter.toFixed_2(queryOrder.store[orderStore.store_id].balance)}}
+            </view>
+          </view>
+          <view class="padding-c"
+                wx:if="{{orderStore.credit_pay == 1 && orderStore.credit_num > 0}}">
+            <view>
+              <text class="label">店铺积分</text>
+              <text class="number">共{{orderStore.credit_num}}积分</text>
+              <block wx:if="{{orderStore.credits_can_buy == 1}}">
+                <text class="number">，使用{{queryOrder.store[orderStore.store_id].credit_num}}积分</text>
+                <view class="tip-icon" data-type="store" data-item="{{orderStore}}" bindtap="showCreditRule">
+                  <icon class="myicon-tip_grey"></icon>
+                </view>
+              </block>
+              <block wx:else>
+                <text class="number credit-warn">商品共需{{ orderStore.max_credit_num == '' ? 0 : orderStore.max_credit_num }}积分，才能购买</text>
+                <view class="tip-icon" data-type="store" data-item="{{orderStore}}" bindtap="showCreditRule">
+                  <icon class="myicon-tip_red"></icon>
+                </view>
+              </block>
+            </view>
+            <view
+                class="fr link-r" wx:if="{{orderStore.credits_model == 0}}"
+                data-type="1"
+                data-item="{{orderStore}}"
+                bindtap="showCreditBalanceLayer">
+              -{{filter.toFixed_2(queryOrder.store[orderStore.store_id].credit_money)}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--endregion 循环店铺 end-->
+
+    <!--region 平台抵扣 start-->
+    <view class="padding-b mb-20"
+          wx:if="{{orderData.platformMemberCoupons && orderData.platformMemberCoupons.length > 0}}">
+      <view
+          class="padding-c p-coupon"
+          data-type="platform" data-item="{{orderData.platformMemberCoupons}}"
+          bindtap="showCoupon">
+        <view>
+          <text>平台优惠券</text>
+          <text class="coupon-tip">已选{{queryOrder.platform.coupon.id ? 1 : 0}}张</text>
+        </view>
+
+        <block>
+          <text class="fr link-r" wx:if="{{query.platform.coupon.id}}">
+            -￥{{filter.toFixed_2(queryOrder.platform.coupon_money)}}
+          </text>
+          <text class="fr link-r" style="color: #999" wx:else>请选择优惠券</text>
+        </block>
+      </view>
+      <view class="padding-c"
+            wx:if="{{orderData.platform_balance_pay == 1 && orderData.platform_balance != 0}}">
+        <view>
+          <text class="label">平台余额</text>
+          <text class="number">共{{orderData.platform_balance}}元</text>
+        </view>
+        <text class="fr link-r">-{{filter.toFixed_2(queryOrder.platform.balance)}}</text>
+      </view>
+      <view class="padding-c"
+            wx:if="{{orderData.platform_credit_pay == 1 && orderData.platform_credit_num != 0}}">
+        <view>
+          <text class="label">平台积分</text>
+          <text class="number">共{{orderData.platform_credit_num}}积分</text>
+          <text class="number">使用{{queryOrder.platform.credit_num}}积分</text>
+          <icon class="myicon-warn_grey" data-type="platform" bindtap="showCreditRule"></icon>
+        </view>
+        <text class="fr link-r">-{{filter.toFixed_2(queryOrder.platform.credit_money)}}</text>
+      </view>
+    </view>
+    <!--第三方抵扣-->
+    <view class="padding-b mb-20"
+          wx:if="{{orderData.thirdpart_money_pay != 0 && orderData.thirdpart_money}}">
+      <view class="padding-c">
+        <view>
+          <text class="label">{{orderData.thirdpart.moneyname}}</text>
+          <text class="number">共{{orderData.thirdpart.consume_money}}元</text>
+        </view>
+        <text class="fr link-r">-{{filter.toFixed_2(queryOrder.thirdpart.balance)}}</text>
+      </view>
+    </view>
+
+    <!--店铺留言-->
+    <view class="padding-b mb-20">
+      <view class="padding-c p-remark">
+        <text>备注</text>
+        <view
+            class="remark-fr" style="{{queryOrder.storeMsg == '' ? 'color:#999' : ''}}"
+            wx:if="{{!textarea.isShow}}" bindtap="showTextarea">
+          {{queryOrder.storeMsg != '' ? queryOrder.storeMsg : '选填，给买家留言'}}
+        </view>
+        <textarea
+            class="remark-fr"
+            focus="{{textarea.isFocus}}"
+            auto-height
+            value="{{queryOrder.storeMsg}}"
+            bindblur="blurMag" wx:if="{{textarea.isShow}}"></textarea>
+      </view>
+    </view>
+    <view class="order-foot">
+      <view class="foot-h"></view>
+      <view class="foot-content">
+        <view class="c-left">
+          <text class="left-t1">支付:</text>
+          <text class="left-t2">￥{{filter.toFixed_2(queryOrder.resultTotal.result_money)}}</text>
+          <text class="left-t3">(已抵扣￥{{filter.toFixed_2((queryOrder.resultTotal.total_money) - (queryOrder.resultTotal.result_money))}})</text>
+        </view>
+        <view class="c-right" bindtap="showPayWayLayer">确认下单</view>
+      </view>
+    </view>
+
+    <!--弹框-->
+    <view>
+      <!--1、就餐人数弹框-->
+      <view class="layer-model__wx" hidden="{{mealNumData.isHideLayer}}">
+        <view class="layer-body">
+          <view class="layer-title">就餐人数</view>
+          <view class="layer-main meal-input">
+            <input type='number' bindinput="bindInputMeal" value="{{mealNumData.temp_num}}" focus="{{mealNumData.isFocus}}"/>
+          </view>
+          <view class="layer-btn">
+            <view class="btn-cancel" bindtap="cancelMealNum">取消</view>
+            <view class="btn-confirm" bindtap="confirmMealNum">确认</view>
+          </view>
+        </view>
+      </view>
+
+      <!--2、餐桌选择弹框-->
+      <component-pend-layer id="pend-layer" bindmyevent="syncPendLayer" pend-data="{{orderData.pend_data_list}}"></component-pend-layer>
+      <!--3、优惠券列表弹框-->
+      <component-coupon-layer id="couponLayer" bindmyevent="syncCouponLayer" coupon-data="{{couponLayerData}}"></component-coupon-layer>
+
+      <!--4、积分使用规则模态框-->
+      <view class="layer-model__wx no-cancel" hidden="{{creditRule.isHideLayer}}">
+        <view class="layer-body">
+          <view class="layer-title">积分使用规则</view>
+          <view class="layer-main credit-rule-layer">
+            <block wx:if="{{creditRule.ruleData.credits_model == 0}}">
+              <view>1、订单金额大于{{creditRule.ruleData.credit_limit_money}}元(含)</view>
+              <view>2、积分最多可抵用订单应付金额的{{creditRule.ruleData.credit_percent}}%</view>
+              <view>3、{{creditRule.ruleData.credit_to_money}}积分抵用1元</view>
+            </block>
+            <block wx:else>
+              <view>会员积分数量不足<block wx:if="{{creditRule.ruleData.credits_limit_buy == 1}}">不</block>能下单</view>
+            </block>
+          </view>
+          <view class="layer-btn">
+            <view class="btn-confirm" bindtap="hideCreditRule">确定</view>
+          </view>
+        </view>
+      </view>
+
+      <!--5、修改积分||余额数量弹框-->
+      <view class="layer-model__wx" hidden="{{creditBalance.isHideLayer}}">
+        <view class="layer-body">
+          <view class="layer-title">{{creditBalance.layerTitle}}</view>
+          <view class="layer-main credit-balance-layer">
+            <input
+                type="{{creditBalance.inputType}}"
+                value="{{creditBalance.num}}"
+                bindinput="bindInputCreditBalance" focus="{{creditBalance.isFocus}}"/>
+          </view>
+          <view class="layer-btn">
+            <view class="btn-cancel" bindtap="cancelCreditBalance">取消</view>
+            <view class="btn-confirm" bindtap="confirmCreditBalance">确定</view>
+          </view>
+        </view>
+      </view>
+
+      <!--6、支付方式弹框、调取微信支付接口-->
+      <view>
+        <component-payment
+            id="payment"
+            pay-method="{{orderData.payMethod}}"
+            parent-type="settlement"
+            bindmyevent="submitOrder"></component-payment>
+      </view>
+
+      <!--7、选择配送时间弹框-->
+      <view>
+        <component-delivery-layer id="deliveryLayer" bindmyevent="syncDeliveryLayer"></component-delivery-layer>
+      </view>
+    </view>
+  </view>
+</view>

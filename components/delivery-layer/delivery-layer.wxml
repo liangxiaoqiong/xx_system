@@ -1,0 +1,23 @@
+<!--components/delivery-layer/delivery-layer.wxml-->
+<view class="delivery-layer" wx:if="{{isShowDeliveryLayer}}">
+  <view class="layer-model" bindtap="hideDeliveryLayer" catchtouchmove="true"></view>
+  <view class="layer-body-fixed">
+    <view class="layer-head">
+      <view class="head-title">请选择送达时间</view>
+      <view class="head-close" bindtap="hideDeliveryLayer"><icon class="myicon-close"></icon></view>
+    </view>
+    <view class="layer-main">
+      <view class="delivery-list">
+        <block wx:for="{{deliveryData.delivery_data}}" wx:key="{{index}}">
+          <view data-item='{{item}}' bindtap='changeDelivery'>
+            <text>{{item}}</text>
+            <icon wx:if="{{chooseDelivery == item}}" class="myicon-selected2"></icon>
+          </view>
+        </block>
+      </view>
+      <view class="layer-foot">
+        <view class="submit-btn {{chooseDelivery != '' ? 'active' : ''}}" bindtap="submitChoose">选好了</view>
+      </view>
+    </view>
+  </view>
+</view>

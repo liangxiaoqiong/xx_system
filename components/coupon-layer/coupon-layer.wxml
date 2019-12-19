@@ -1,0 +1,45 @@
+<!--components/coupon-layer/coupon-layer.wxml-->
+<view class="coupon-layer" wx:if="{{isShowCouponLayer}}">
+  <view class="layer-model" catchtap="hideCouponLayer" catchtouchmove="true"></view>
+  <view class="layer-body-fixed">
+    <view class="layer-head">
+      <view class="head-title">选择可用优惠券</view>
+      <view class="head-close" catchtap="hideCouponLayer"><icon class="myicon-close"></icon></view>
+    </view>
+    <view class="layer-main">
+      <block wx:for="{{couponData.couponList}}" wx:key="{{index}}">
+        <view class="coupon-list {{item.id == chooseCoupon.id ? 'active' : ''}}"
+            data-item="{{item}}" catchtap="changeCoupon">
+          <view class='c-radio'><icon></icon></view>
+          <view class="coupon-info">
+            <view class="i-left">
+              <view class='i-container'>
+                <view class="c-limit line-two">使用范围：{{item.available_class_name}}</view>
+                <view class="c-time">
+                  <block wx:if="{{item.limit_time == 0}}">无期限</block>
+                  <block wx:if="{{item.limit_time > 0}}">{{item.end_time_str}}</block>
+                </view>
+              </view>
+            </view>
+            <view class="i-right">
+              <view class='i-container'>
+                <view class="c-price">
+                  <block wx:if="{{item.coupons_type == 1}}">
+                    <text>￥</text><text class="p-n">{{item.coupons_money}}</text>
+                  </block>
+                  <block wx:else>
+                    <text class="p-n">{{item.coupons_show_discount}}</text><text>折</text>
+                  </block>
+                </view>
+                <view class="c-mj">满{{item.limit_money}}元可用</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="layer-foot">
+      <view class="submit-btn active" bindtap="submitCoupon">确定</view>
+    </view>
+  </view>
+</view>

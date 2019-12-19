@@ -1,0 +1,8 @@
+<!--客服悬浮按钮-->
+<template name="customer-service">
+  <view class="customer-service-btn">
+    <button open-type='contact'></button>
+    <!--<contact-button></contact-button>-->
+    <image src="/images/img_icon/customer_service_black.png"></image>
+  </view>
+</template>

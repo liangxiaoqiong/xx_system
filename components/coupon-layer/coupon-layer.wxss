@@ -1,0 +1,87 @@
+/*components/coupon-layer/coupon-layer.wxss*/
+.coupon-layer .layer-model{z-index: 104}
+.coupon-layer .layer-body-fixed{
+  z-index: 105;
+  background-color: #f9f9f9;
+}
+.coupon-layer .layer-main{max-height: 700rpx;overflow-y: auto;display: inline-block;width: 100%}
+.coupon-layer .coupon-list{
+  padding: 10rpx 30rpx;
+  display: inline-block;
+  width: 100%
+}
+.coupon-layer .coupon-list .c-radio{
+  float: left;
+  display: flex;
+  width: 30rpx;
+  height: 200rpx;
+  align-items: center;
+}
+.coupon-layer .coupon-list .c-radio icon{
+  display:inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  border:1rpx solid #999999;
+  box-sizing: border-box;
+  border-radius: 100%;
+}
+.coupon-list .coupon-info{
+  width: calc(100% - 50rpx);
+  margin-left: 20rpx;
+  float: left;
+  height: 200rpx;
+  display: inline-block;
+  background: url('http://m.duinin.com/Public/wap2/img/coupon/couponBgRed.png')center center no-repeat;
+  background-size: 100% 100%;
+}
+.coupon-list .coupon-info .i-left .i-container,
+.coupon-list .coupon-info .i-right .i-container{
+  height: 200rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+.coupon-list .coupon-info .i-left{
+  width: 67.5%;
+  float: left;
+  display: inline-block
+}
+.coupon-list .coupon-info .i-left .i-container{
+  align-items: flex-start;
+  padding: 30rpx;
+}
+.coupon-list .coupon-info .i-left .c-limit{
+  font-size: 24rpx;
+  line-height: 32rpx;
+  height: 58rpx;
+  margin-bottom: 40rpx;
+}
+.coupon-list .coupon-info .i-left .c-time{
+  font-size: 22rpx;
+  color: #999999;
+}
+.coupon-list .coupon-info .i-right{
+  width: 31.4%;
+  float: left;
+  display: inline-block;
+}
+.coupon-list .coupon-info .i-right .c-price{
+  color: #fff;
+  font-size: 42rpx;
+  font-weight: bold;
+  vertical-align: sub;
+  margin-top: -10rpx;
+}
+.coupon-list .coupon-info .i-right .c-price .p-n{
+  font-size: 84rpx;
+}
+.coupon-list .coupon-info .i-right .c-mj{
+  font-size: 24rpx;
+  color: #fff
+}
+.coupon-layer .coupon-list.active icon{
+  background: url('http://m.duinin.com/Public/common/img/success_red2.png')center center no-repeat;
+  background-size: 30rpx 30rpx;
+  border: none;
+}

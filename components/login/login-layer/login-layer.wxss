@@ -1,0 +1,56 @@
+/* components/login/login-layer/login-layer.wxss */
+.login-layer .layer-model {
+  z-index: 100;
+}
+.login-layer .layer-body-fixed {
+  width: 500rpx;
+  height: 321rpx;
+  border-radius: 10rpx;
+  padding: 10rpx 50rpx;
+  top: calc(50% - 160rpx);
+  left: calc(50% - 250rpx);
+  z-index: 102;
+}
+.login-layer .layer-body-fixed .title {
+  color: #000000;
+  font-size: 36rpx;
+  text-align: center;
+  font-weight: bold;
+  padding: 40rpx 0 20rpx 0;
+}
+.login-layer .layer-body-fixed .content {
+  color: #999999;
+  font-size: 28rpx;
+  text-align: center;
+  padding: 10rpx 0;
+}
+.login-layer .layer-body-fixed .btn {
+  text-align: center;
+  padding: 40rpx 0 30rpx 0;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.login-layer .layer-body-fixed .btn button::before,
+.login-layer .layer-body-fixed .btn button::after {
+  display: none;
+}
+.login-layer .layer-body-fixed .btn button {
+  text-align: center;
+  width: 180rpx;
+  height: 80rpx;
+  line-height: 78rpx;
+  border-radius: 40px;
+  font-size: 28rpx;
+}
+.login-layer .layer-body-fixed .btn button.btn-0 {
+  color: #000000;
+  background-color: #fff;
+  border: 1px solid #f0f0f0;
+}
+.login-layer .layer-body-fixed .btn button.btn-1 {
+  color: #fff;
+  background-color: #ff0b0b;
+  border: 1px solid #ff0b0b;
+}

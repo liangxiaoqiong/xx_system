@@ -1,0 +1,111 @@
+<!--component/foot-cart.wxml-->
+<view class="foot-cart">
+  <view class="cart-content" hidden="{{!isShowCartGoods}}">
+    <view class="layer-model" bindtap="cartGoodsLayer" catchtouchmove="true"></view>
+    <view class="cart-container">
+      <view class="clear-cart" catchtouchmove="true">
+        <view class="clear-btn" bindtap="clearCart"><image src="../../images/img_icon/del_grey.png"></image><text>清空购物车</text></view>
+      </view>
+      <view class="cart-scroll-container">
+        <scroll-view  scroll-y class="cart-scroll">
+          <!--region 循环店 start-->
+          <view class="cart-shop" wx:for="{{cartData.cartList}}" wx:for-item="cartShop" wx:for-index="i_shop" wx:key="{{i_shop}}">
+            <!--region 循环满减活动 start-->
+            <view class="cart-mj" wx:for="{{cartShop.sortedItems}}" wx:for-item="cartShopMj" wx:for-index="i_mj" wx:key="{{i_mj}}">
+              <view class="mj-data" wx:if="{{cartShopMj.mjId > 0}}">
+                <text class="mj-tag">折扣</text>
+                <view class="mj-title">{{cartShopMj.mjItem.promoteTitle}}</view>
+              </view>
+              <!--region 循环店铺的商品列表 start-->
+              <view class="cart-goods">
+                <view class="goods-li" wx:for="{{cartShopMj.cartGoods}}" wx:for-item="cartGoods" wx:for-index="i_g" wx:key="{{i_g}}">
+                  <view class="goods-info">
+                    <text class="goods-name line-one">{{cartGoods.gName}}</text>
+                  </view>
+                  <view class='goods-spec line-one'>{{cartGoods.gSpec != null ? cartGoods.gSpec : ''}}</view>
+                  <view class="goods-mj" wx:if="{{cartGoods.selectMj.length > 1}}">
+                    <view class="mj-list">
+                      <block wx:for="{{cartGoods.selectMj}}" wx:for-item="mjList" wx:key="{{index}}">
+                        <view class="mj-div" wx:if="{{mjList.state == 1}}">
+                          <text class="cx-tip">促销</text>
+                          <text class="cx-name line-one">{{mjList.name}}</text>
+                          <text
+                              class="upd-mj"
+                              data-item="{{cartGoods.selectMj}}"
+                              data-cartgoods="{{cartGoods}}"
+                              bindtap="showMjLayer">修改促销></text>
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                  <view class="price-num">
+                    <text class='price'>￥{{cartGoods.gPrice}}</text>
+                    <view class="cart-num-view">
+                      <view class="cart-num-icon" data-type="minus" data-item="{{cartGoods}}" bindtap="cartNumAction">
+                        <icon class="myicon-minus"></icon>
+                      </view>
+                      <text>{{cartGoods.num}}</text>
+                      <view class="cart-num-icon">
+                        <icon class="myicon-add" data-type="add" data-item="{{cartGoods}}" bindtap="cartNumAction"></icon>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <!--endregion 循环店铺的商品列表 end-->
+            </view>
+            <!--endregion 循环满减活动 end-->
+          </view>
+          <!--endregion 循环店 end-->
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <!--region 底部购物车数量、价格 start-->
+  <block>
+    <view class="cart-nav foot-nav_{{footBtnType}}" wx:if="{{cartData.totalNum > 0 || footBtnType == 1}}">
+      <view class="nav-left">
+        <view class="cart-icon" bindtap="cartGoodsLayer">
+          <icon class="myicon-cart_white"></icon>
+          <text class="cart-num">{{cartData.totalNum}}</text>
+        </view>
+        <view class="cart-price" wx:if="{{isShowCartGoods}}">
+          <text class="fact-price">{{cartData.factTotalPrice}}</text>
+          <text class="total-price" wx:if="{{cartData.totalPrice > cartData.factTotalPrice}}">￥{{cartData.totalPrice}}</text>
+        </view>
+      </view>
+      <block wx:if="{{footBtnType == 1}}">
+        <button class="nav-right nav-share" open-type="share">发起接龙</button>
+      </block>
+      <view class="nav-right" bindtap="submitOrder">{{ footBtnText }}</view>
+    </view>
+    <!--购物车为空-->
+    <view class="cart-nav cart-none" wx:else>
+      <view class="nav-left">
+        <image src="../../images/img_icon/cart_black.png"></image>
+        <text>未选择商品</text>
+      </view>
+      <view class="nav-right" bindtap="login" wx:if="{{userInfo === ''}}">请先登录哦！</view>
+      <view class="nav-right" wx:else>请选择</view>
+    </view>
+  </block>
+  <!--endregion 底部购物车数量、价格 end-->
+  <!--修改促销弹框-->
+  <view class="mj-foot" hidden="{{!mjData.isShowMjLayer}}">
+    <view class="layer-model" bindtap="hideMjLayer"></view>
+    <view class="mj-content">
+      <view class="layer-head">
+        <view class="head-title">修改促销</view>
+        <view class="head-close" bindtap="hideMjLayer"><icon class="myicon-close"></icon></view>
+      </view>
+      <view>
+        <radio-group class="radio-group" bindchange="changeMjType">
+          <label class="radio" wx:for="{{mjData.mjList}}" wx:key="{{index}}">
+            <radio value="{{item.Id}}" checked="{{item.state == 1}}"/>
+            <text>{{item.name}}</text>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+<!--pages/test_code/count-down/count-down.wxml-->
+<!--倒计时  -->
+<view class="countDownTimeView countDownAllView" >
+  <view class="voteText countDownTimeText">{{countDownDay}}天</view>
+  <view class="voteText countDownTimeText">{{countDownHour}}时</view>
+  <view class="voteText countDownTimeText">{{countDownMinute}}分</view>
+  <view class="voteText countDownTimeText">{{countDownSecond}}秒</view>
+</view>

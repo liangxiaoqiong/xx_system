@@ -1,0 +1,41 @@
+<!--pages/address/address-info/address-info.wxml-->
+<view class="container">
+  <view class="page-body">
+    <view class="address-dl">
+      <view class="dl-basic">
+        <view class="dl-dt">联系人</view>
+        <view class="dl-dd">
+          <input type="text"
+                 data-input="member_name" bindinput="bindInput"
+                 value="{{info.member_name}}" placeholder="请填写收货人的姓名"/>
+        </view>
+      </view>
+      <view class="dl-basic">
+        <view class="dl-dt">手机号</view>
+        <view class="dl-dd">
+          <input type="number"
+                 data-input="member_tel" bindinput="bindInput"
+                 value="{{info.member_tel}}" placeholder="请填写收货人的手机号"/>
+        </view>
+      </view>
+      <view class="dl-basic">
+        <view class="dl-dt">收货地址</view>
+        <view class="dl-dd link-r">
+          <component-pick-region id="pickRegion" bindmyevent="syncRegion"></component-pick-region>
+        </view>
+      </view>
+      <view class="dl-basic">
+        <view class="dl-dt">详细地址</view>
+        <view class="dl-dd">
+          <input type="text"
+                 data-input="address" bindinput="bindInput"
+                 value="{{info.address}}" placeholder="详细地址"/>
+        </view>
+      </view>
+    </view>
+    <view class="edit-address-btn">
+      <view class="btn btn-save" bindtap="checkAddress">保存地址</view>
+      <view class="btn btn-del" bindtap="delAddress" wx:if="{{info.address_id > 0}}">删除地址</view>
+    </view>
+  </view>
+</view>

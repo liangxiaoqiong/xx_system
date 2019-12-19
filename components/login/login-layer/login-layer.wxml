@@ -1,0 +1,16 @@
+<!--components/login/login-layer/login-layer.wxml-->
+<view class="login-layer" wx:if="{{isShowLayer}}">
+  <view class="layer-model"></view>
+  <view class="layer-body-fixed">
+    <view class="title">您还未登录</view>
+    <view class="content">请先登录再进行操作</view>
+    <view class="btn">
+      <button class="btn-0" bindtap="hideLayer">暂不登录</button>
+      <button
+          class="btn-1"
+          wx:if="{{canIUse}}"
+          open-type="getUserInfo"
+          bindgetuserinfo="bindGetUserInfo">立即登录</button>
+    </view>
+  </view>
+</view>

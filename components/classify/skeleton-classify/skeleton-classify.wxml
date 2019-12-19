@@ -1,0 +1,19 @@
+
+<!-- 最外层的view绑定了js中定义的宽、高以及背景颜色 -->
+<view class="skeleton-body">
+    <view class="left"><view wx:for="{{goodsList}}" wx:key="{{index}}"><text></text></view></view>
+    <view class="right">
+        <view class="list-search"><text></text></view>
+        <view class="list-container">
+            <view class="list-item" wx:for="{{goodsList}}" wx:key="{{index}}">
+                <view class="list-img"></view>
+                <view class="list-text">
+                    <text></text>
+                    <text></text>
+                    <view></view>
+                    <icon></icon>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,26 @@
+<!--components/payment/payment.wxml-->
+<!--支付方式选择弹框-->
+<view class="layer-model__wx" hidden="{{isHidePayWayLayer}}">
+  <view class="layer-body">
+    <view class="layer-main pay-way-layer">
+      <view class="pay-way-btn" wx:if="{{payMethod}}">
+        <view class="pay__p" wx:if="{{payMethod.wxpay == 1}}">
+          <view class="pay__a pay-wx" data-way="1" bindtap="changePayWay">
+            <icon class="icon-pay-wx"></icon>
+            <text>微信支付</text>
+          </view>
+        </view>
+        <view class="pay__p" wx:if="{{payMethod.cashpay == 1}}">
+          <view class="pay__a pay-offLine" data-way="0" bindtap="changePayWay">
+            <icon class="icon-pay-offLine"></icon>
+            <text>线下支付</text>
+          </view>
+        </view>
+      </view>
+      <view class="pay-way-note"
+            wx:if="{{payMethod && payMethod.wxpay != 1 && payMethod.cashpay != 1}}">温馨提示：暂无支付方式,请联系商家。</view>
+      <view class="pay-way-note" wx:else>温馨提示：如使用在线支付，钱款将直接给商家，付款前请仔细核对您的订单。</view>
+    </view>
+    <view class="layer-btn-icon" bindtap="hidePayWayLayer"></view>
+  </view>
+</view>

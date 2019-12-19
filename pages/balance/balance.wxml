@@ -1,0 +1,2 @@
+<!--pages/balance/balance.wxml-->
+<web-view src="{{webViewUrl}}"></web-view>

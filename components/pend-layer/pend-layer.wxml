@@ -1,0 +1,20 @@
+<!--components/pend-layer/pend-layer.wxml 选择桌号列表-->
+<view class="pend-layer" wx:if="{{isShowPendLayer}}">
+  <view class="layer-model" catchtap="hidePendLayer" catchtouchmove="true"></view>
+  <view class="layer-body-fixed">
+    <view class="layer-head">
+      <view class="head-title">请选择桌位</view>
+      <view class="head-close" catchtap="hidePendLayer"><icon class="myicon-close"></icon></view>
+    </view>
+    <view class="layer-main">
+      <view class="pend-list">
+        <block wx:for="{{pendData}}" wx:key="{{index}}">
+          <view
+              class="pend-text {{item.id == choosePend.id ? 'active' : ''}}"
+              data-item="{{item}}"
+              bindtap="changePend">{{item.name}}</view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

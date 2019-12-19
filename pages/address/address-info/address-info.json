@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "添加/编辑收货地址",
+  "usingComponents": {
+    "component-pick-region": "/components/pick-region/pick-region"
+  }
+}

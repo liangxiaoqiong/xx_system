@@ -1,0 +1,73 @@
+/*pages/order/order-list/order-list.wxss*/
+.order-li{
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.order-li .order-info{
+  min-height: 190rpx;
+  position: relative;
+  padding:30rpx;
+}
+.order-li .order-info .info-sn{
+  font-size: 28rpx;
+  max-width: calc(100% - 160rpx);
+  margin-bottom: 20rpx;
+}
+.order-li .order-info .info-time{
+  color: #999999;
+  font-size: 26rpx;
+}
+.order-li .order-info .info-status{
+  position:absolute;
+  z-index: 1;
+  top: 30rpx;
+  right: 30rpx;
+  border-radius: 25rpx;
+  font-size:26rpx;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  height: 50rpx;
+  min-width: 140rpx;
+  padding: 0 20rpx;
+}
+.order-li .order-info .info-status.order-state-btn_1{
+  background-color: #f6f6f6;
+  color:#666666;
+}
+.order-li .order-info .info-status.order-state-btn_2{
+  background-color: #fff9e3;
+  color:#ff921c;
+}
+.order-li .order-info .info-status.order-state-btn_3{
+  background-color: #fff8f8;
+  color:#f82e2e;
+}
+.order-li .price-btn{
+  border-top: 1px solid #f0f0f0;
+  padding: 20rpx;
+  position: relative
+}
+.order-li .price-btn .price{
+  height: 50rpx;
+  display: inlice-block;
+  color: #000000;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.order-li .price-btn .btn{
+  position: absolute;
+  z-index: 1;
+  right: 30rpx;
+  top: 20rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20rpx;
+  border: 1px solid #f82e2e;
+  color: #f82e2e;
+  font-size:26rpx;
+  min-width: 140rpx;
+  border-radius:25rpx;
+}

@@ -1,0 +1,68 @@
+/* pages/user/user.wxss */
+.user-head {
+  background: #f82e2e;
+  height: 250rpx;
+  justify-content: flex-start;
+  padding: 0 32rpx;
+  margin-bottom: 20rpx;
+}
+.user-head .user-img {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+}
+.user-head .user-text {
+  width: calc(100% - 130rpx);
+  display: inline-block;
+  color: #fff;
+  padding-left: 20rpx;
+}
+.user-head .user-text .user-nickname {
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+.user-head .user-text .user-id {
+  font-size: 22rpx;
+}
+
+.user-tool .li {
+  background:#fff url("http://m.duinin.com/Public/common/img/rightBlack.png")calc(100% - 30rpx) center no-repeat;
+  background-size: 25rpx 25rpx;
+  position: relative;
+  padding: 0 30rpx;
+  height: 95rpx;
+  display: flex;
+  align-items: center;
+}
+
+.user-tool .li:after {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 30rpx;
+  width: calc(100% - 60rpx);
+  display: inline-block;
+  height: 1px;
+  background-color: #f0f0f0;
+  content: '';
+}
+.li:last-child:after {
+  display: none;
+}
+.user-tool .li image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 20rpx;
+}
+.user-tool .li.tool-coupon image{
+  height: 24rpx;
+}
+.user-tool .li.tool-recharge image{
+  width: 27rpx;
+  height: 25rpx;
+}
+
+.user-tool .li text{
+  color: #000000;
+  font-size: 28rpx;
+}

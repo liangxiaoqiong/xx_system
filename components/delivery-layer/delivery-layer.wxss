@@ -1,0 +1,40 @@
+/* components/delivery-layer/delivery-layer.wxss */
+.delivery-list{
+  max-height: 800rpx;
+  overflow-y: auto;
+}
+.delivery-list view{
+  display: inline-block;
+  color: #000000;
+  font-size: 28rpx;
+  position: relative;
+  padding: 0 30rpx;
+  width: 100%;
+}
+.delivery-list view::after{
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - 30rpx);
+  height: 1px;
+  display: inline-block;
+  background-color: #f0f0f0;
+  content: '';
+}
+.delivery-list view text{
+  max-width: calc(100% - 30rpx);
+  display: flex;
+  align-items: center;
+  min-height: 95rpx;
+}
+.delivery-list view icon{
+  position: absolute;
+  z-index: 1;
+  right: 30rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}

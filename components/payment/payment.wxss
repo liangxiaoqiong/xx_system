@@ -1,0 +1,39 @@
+/* components/payment/payment.wxss */
+/*支付方式弹框 start*/
+.layer-model__wx{
+  z-index: 1000;
+}
+.layer-model__wx .layer-body{
+  z-index: 1001;
+}
+.pay-way-btn{
+  margin: 50rpx 0;
+  text-align: center
+}
+.pay-way-btn .pay__p{
+  padding: 20rpx;
+  display: block;
+  width: 100%;
+  height:104rpx;
+}
+.pay-way-btn .pay__p .pay__a{
+  border-radius: 40rpx;
+  border: 1px solid #ffffff;
+  display:inline-block;
+  padding:4rpx 30rpx;
+  margin: 0 auto;
+  min-width: 260rpx
+}
+.pay-way-btn .pay__p .pay__a text{vertical-align: middle}
+.pay-way-btn .pay__p .pay__a.pay-wx{border-color: #00ba17}
+.pay-way-btn .pay__p .pay__a.pay-wx text{color:#00ba17}
+.pay-way-btn .pay__p .pay__a.pay-offLine{border-color: #ec6e09}
+.pay-way-btn .pay__p .pay__a.pay-offLine text{color:#ec6e09}
+.pay-way-note{
+  font-size: 26rpx;
+  color: #999;
+}
+.icon-pay-wx{background: url("http://m.duinin.com/Public/wap2/img/common/payWay_wx.png")center center no-repeat;background-size: 60%;width: 34px;height: 30px;display: inline-block;vertical-align: middle}
+.icon-pay-offLine{background: url("http://m.duinin.com/Public/wap2/img/common/payWay_offLine.png")center center no-repeat;background-size: 60%;width: 31px;height: 31px;display: inline-block;vertical-align: middle}
+.icon-close-white{background:url("http://m.duinin.com/Public/common/img/closeWhite.png")center center no-repeat;background-size: 100%; width: 40px;height: 40px;display: inline-block;vertical-align: middle}
+/*支付方式弹框 end*/

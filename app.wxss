@@ -1,0 +1,324 @@
+/**app.wxss**/
+@import 'icon/iconfont.wxss';
+page{font-size: 28rpx;background-color:#f2f2f2}
+view,text,button,label, input{box-sizing:border-box;}
+input{min-height:40rpx;}
+.container{display: flex;align-content: flex-start;flex-direction: column;box-sizing: border-box;}
+.color-red{}
+.style-text-color{
+  color: #f82e2e;
+}
+.text-center{
+  text-align: center;
+}
+.flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/**region icon start**/
+[class*="myicon-"]{display:inline-block;vertical-align:middle}
+.myicon-search-black{width:18px;height:18px;background: url('http://m.duinin.com/Public/wap2/img/shopHome/search.png') no-repeat;background-size: contain;
+}
+.myicon-cart_white{
+  background: url("http://m.duinin.com/Public/common/img/gouwuche.png")center center no-repeat;
+  background-size: 53rpx 45rpx;
+  width: 53rpx;
+  height: 45rpx;
+}
+.myicon-search_grey{
+  background: #f6f6f6 url("http://m.duinin.com/Public/wap2/img/common/searchGrey2.png")center center no-repeat;
+  background-size: 25rpx;
+  width: 25rpx;
+  height: 25rpx;
+}
+/*筛选选中*/
+.myicon-screen.active:before{
+  color: #f82e2e;
+}
+.myicon-close-white {
+  background: url("http://m.duinin.com/Public/common/img/close_white5.png")center center no-repeat;
+  background-size: 66rpx;
+  width: 66rpx;
+  height: 66rpx;
+}
+/**endregion icon end**/
+
+[class*='goods-type-']{display: inline-block;vertical-align: middle;box-sizing: border-box;height:24rpx;margin-right: 8rpx;}
+.goods-type-vip{background: url("http://m.duinin.com/Public/common/img/goods_type_icon/vip.png")center center no-repeat;background-size:auto 100%;width:28rpx;}
+.goods-type-he{background: url("http://m.duinin.com/Public/common/img/goods_type_icon/he.png")center center no-repeat;background-size:auto 100%;width:28rpx;}
+.goods-type-jiang{background: url("http://m.duinin.com/Public/common/img/goods_type_icon/jiang.png")center center no-repeat;background-size:auto 100%;width:28rpx;}
+.goods-type-mj{background: url("http://m.duinin.com/Public/common/img/goods_type_icon/mj.png")center center no-repeat;background-size:auto 100%;width:48rpx;}
+.goods-type-qiang{background: url("http://m.duinin.com/Public/common/img/goods_type_icon/qiang.png")center center no-repeat;background-size:auto 100%;width:28rpx;}
+.goods-type-re{background: url("http://m.duinin.com/Public/common/img/goods_type_icon/re.png")center center no-repeat;background-size:auto 100%;width:28rpx;}
+.goods-type-yushou{background: url("http://m.duinin.com/Public/common/img/goods_type_icon/yushou.png")center center no-repeat;background-size:auto 100%;width:48rpx;}
+.goods-type-zp{
+  width: 24rpx;
+  height: 24rpx;
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f82e2e;
+  font-size: .45rem;
+  color: #f82e2e;
+  border-radius: 2px;
+}
+
+.line-one{line-height: inherit;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.line-two{display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;line-height: inherit;}
+.img-box{position:relative;width:100%;box-sizing:border-box;display:inline-block;height:0;padding-bottom:100%;vertical-align:middle}
+.img-box image{position:absolute;width:100%;box-sizing:border-box;display:inline-block;height:100%;z-index:1;top:0;left:0}
+
+.mb-20{margin-bottom: 20rpx;}
+.fr{float: right}
+.link-r{
+  background: url("http://m.duinin.com/Public/common/img/rightBlack.png")right center no-repeat;
+  background-size:30rpx 30rpx;
+  padding-right: 46rpx;
+}
+
+.in-end{text-align: center;font-size: 24rpx;padding: 20rpx 0;color: #999}
+
+/* region -+数量样式*/
+.cart-num-view{display: inline-block;vertical-align: middle;}
+.cart-num-icon{
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+.cart-num-view icon{float: left;width: 60rpx;height: 60rpx;font-size:38rpx;display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-num-view text{display: inline-block;color: #333333;font-size: 28rpx;text-align: center;
+  height: 60rpx;line-height: 60rpx;width: 36rpx;vertical-align: middle;float: left}
+.cart-num-view .no-storage{
+  width: initial;
+  display: inline-block;
+  font-size: 22rpx;
+  color: #999;
+  padding-right:10rpx;
+}
+/*endregion*/
+
+/*  region 重写 radio 样式  */
+/* 未选中的 背景样式 */
+radio{
+  vertical-align: middle;
+  margin-top: -4rpx;
+  font-size: 0;
+}
+radio .wx-radio-input{
+  width: 30rpx;
+  height: 30rpx;
+  box-sizing: border-box;
+}
+/* 选中后的 背景样式*/
+radio .wx-radio-input.wx-radio-input-checked{background: #f82e2e;border:none;}
+/* 选中后的 对勾样式*/
+radio .wx-radio-input.wx-radio-input-checked::before{
+  width: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 30rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: #f82e2e;
+  font-size:18rpx; /* 对勾大小 30rpx */
+  color:#fff; /* 对勾颜色 白色 */
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.radio-group label text{font-size: 28rpx;vertical-align: middle;max-width: calc(100% - 60rpx);}
+
+.radio-group__1 radio{
+  font-size: 0;
+}
+.radio-group__1 .wx-radio-input{width: 38rpx;height: 38rpx;}
+.radio-group__1 .wx-radio-input.wx-radio-input-checked{background: #fff6f6;position: relative}
+.radio-group__1 .wx-radio-input.wx-radio-input-checked::before{width: 38rpx;height: 38rpx;line-height: 38rpx;
+  font-size:22rpx;
+  background: #fff6f6;
+  color: #f82e2e;
+}
+.radio-group__1 .wx-radio-input.wx-radio-input-checked::after{
+  border: 2rpx solid #f82e2e;
+  border-radius: 100%;
+  width: 38rpx;
+  height:38rpx;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  display: inline-block;
+  content: '';
+  top: 0;
+  left: 0;
+}
+/*endregion*/
+
+/*region 修改默认的navigator点击态 **/
+.navigator-hover {
+  background-color: transparent;
+  opacity: 1;
+}
+/*endregion*/
+
+/*region 模拟微信小程序modal自定义弹框， start*/
+/*no-cancel:没有取消按钮*/
+.layer-model__wx{
+  position: fixed;
+  z-index: 1000;
+  top: 0;bottom: 0;
+  left: 0;right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.4);
+}
+.layer-model__wx .layer-body{
+  position: fixed;
+  z-index: 1001;
+  top: 20%;
+  width: 90%;
+  left: 5%;
+  height: initial;
+  background-color: #fff;
+  min-height: 300rpx;
+  border-radius: 20rpx;
+}
+.layer-model__wx .layer-body .layer-title{
+  display: inline-block;
+  padding: 20px 0 16rpx 0;
+  text-align: center;
+  color: #000000;
+  font-size: 32rpx;
+  width: 100%
+}
+.layer-model__wx .layer-body .layer-main{
+  padding:0 50rpx 40rpx 50rpx;
+  min-height: 130rpx;
+}
+.layer-model__wx .layer-body .layer-btn{
+  height: 100rpx;
+  display: inline-block;
+  border-top: 1px solid #f0f0f0;
+  position: relative;
+  width: 100%;
+  vertical-align: middle;
+  border-radius: 0 0 20rpx 20rpx;
+}
+.layer-model__wx .layer-body .layer-btn::after{
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  display: inline-block;
+  background-color: #f0f0f0;
+  content: '';
+  height: 100rpx;
+}
+.layer-model__wx .layer-body .layer-btn .btn-confirm,
+.layer-model__wx .layer-body .layer-btn .btn-cancel{
+  float: left;
+  line-height: 98rpx;
+  font-size: 30rpx;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+.layer-model__wx .layer-body .layer-btn .btn-confirm{
+  color: #f82e2e;
+}
+.layer-model__wx.no-cancel .layer-body .layer-btn .btn-confirm{
+  width: 100%;
+}
+.layer-model__wx.no-cancel .layer-body .layer-btn::after{
+  display: none;
+}
+.layer-model__wx .layer-btn-icon{
+  position: absolute;
+  background: url('http://m.duinin.com/Public/common/img/closeWhite.png')center center no-repeat;
+  background-size: 100%;
+  width: 80rpx;
+  height: 80rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 80rpx;
+  left: calc(50% - 40rpx);
+}
+.layer-model__wx .btn-close{
+}
+/*endregion 模拟微信小程序modal自定义弹框， end*/
+
+/**region 置底弹框 start*/
+.layer-model{width: 100%;height: 100%;display: inline-block;position: fixed;z-index: 99;left: 0;right: 0;bottom: 0; top: 0;background-color: rgba(0,0,0,0.4)}
+.layer-head{position: relative;height: 108rpx;line-height: 108rpx;text-align: center;font-size: 30rpx;
+  overflow: hidden;
+}
+.layer-head .head-close{position: absolute;z-index: 1;display: inline-block;cursor: pointer;text-align: center;top: 0;right: 0;height: 108rpx;width: 80rpx;outline: none;}
+.layer-head .head-close icon{font-size: 20rpx;line-height: 74rpx;}
+.layer-body-fixed{
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  display: inline-block;
+  background-color: #fff;
+  bottom: 0;
+}
+.layer-foot .submit-btn{text-align: center;background: rgb(223, 223, 223);height: 90rpx;color: #fff;font-size: 30rpx;line-height: 90rpx;}
+.layer-foot .submit-btn.active{background-color: #f82e2e;}
+/**endregion 置底弹框 end*/
+
+/*region 数据为空 start*/
+.request-none{
+  display: flex;
+  height: 600rpx;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.request-none image{
+  width: 188rpx;
+  height: 200rpx;
+}
+.request-none .none-tip{
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #999;
+}
+/*endregion 数据为空 end*/
+
+/** region 客服按钮悬浮 */
+.customer-service-btn{
+  position: fixed;
+  z-index: 100;
+  width: 90rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: #fff;
+  box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.27);
+  bottom: 130rpx;
+  right: 30rpx;
+}
+.customer-service-btn button{
+  position: absolute;
+  z-index: 101;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.customer-service-btn image{
+  width: 40rpx;
+  height: 40rpx;
+}
+/*endregion 客服按钮悬浮 end*/
+

@@ -1,0 +1,27 @@
+/* pages/test_code/swiper_float/swiper-float.wxss */
+.li{
+  width: 100%;
+  height: 252rpx;
+}
+.li1{
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  height: 252rpx;
+  transform: scale(0.9);
+}
+.selected{
+  transform: scale(1)
+}
+.red{
+  background: red;
+}
+.blue{
+  background: blue;
+}
+.green{
+  background: green;
+}
+.orange{
+  background: orange;
+}

@@ -1,0 +1,34 @@
+
+
+.layer-model{z-index: 104}
+.layer-body-fixed{
+  z-index: 105;
+}
+.layer-main{max-height: 600rpx;padding: 0 30rpx;overflow-y: auto;display: inline-block;width: 100%}
+/*region 减减弹框*/
+.spec-minus-layer .layer-head .head-title{
+  line-height: initial;
+  padding: 30rpx;
+  text-align: left;
+  max-width: calc(100% - 100rpx);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.spec-minus-layer .layer-head .head-title .title-tip{
+  color: #999;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  display: block;
+}
+.cart-goods{background-color: #fff;max-height: 800rpx;overflow-y: auto;display: inline-block;width: 100%;vertical-align: middle}
+.goods-li{border-bottom: 1px solid #f0f0f0;padding: 30rpx;position: relative}
+.cart-goods .goods-info{width: calc(100% - 350rpx);display: inline-block;line-height: 36rpx;border-top: none}
+.cart-goods .goods-info .goods-name{font-size: 28rpx;display: inline-block;width: 100%}
+.cart-goods .goods-info .goods-spec{color: #999999;font-size: 22rpx;}
+.cart-goods .price-num{position: absolute;top: 30rpx;right: 30rpx;z-index: 1;display: inline-block}
+.cart-goods .price-num .price{width: 130rpx;text-align: left;margin-right: 20rpx;color: #f82e2e;font-size: 30rpx;line-height: 38rpx;vertical-align: middle;display: inline-block}
+.cart-goods .price-num .cart-num-view{
+  position: initial;
+}
+/*endregion*/

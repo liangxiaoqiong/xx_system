@@ -1,0 +1,2 @@
+<!--pages/action-link/action-link.wxml diy链接跳转页面-->
+<web-view src="{{webViewUrl}}"></web-view>

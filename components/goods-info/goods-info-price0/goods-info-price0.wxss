@@ -1,0 +1,121 @@
+/* components/goods-info/goods-info-price-0/goods-info-price0.wxss */
+.goods-price-type_1 {
+  position: relative;
+  min-height: 110rpx;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: center;
+  background-color: #ff0b0b;
+}
+.goods-price-type_1 .left-top {
+  position: absolute;
+  z-index: 10;
+  padding: 0 30rpx;
+  height: 50rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 24rpx;
+  border-radius: 0 20rpx 0 0;
+  left: 0;
+  top: -48rpx;
+  background-color: #ff0b0b;
+}
+.goods-price-type_1 .content-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  width: 100%;
+}
+.goods-price-type_1 .content-container .left {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  width: calc(100% - 232rpx);
+  color: #ffffff;
+  position: relative;
+}
+.goods-price-type_1 .content-container .left .left-icon {
+  width: 100rpx;
+  height: 110rpx;
+  background: url('http://m.duinin.com/Public/wap2/img/goods/goods_info/flashsale_white.png')center center no-repeat;
+  background-size: 50rpx 49.2rpx;
+}
+.goods-price-type_1 .content-container .left .left-price {
+  width: calc(100% - 55rpx);
+  flex-direction: column;
+  align-items: flex-start;
+}
+.goods-price-type_1 .content-container .left .new-price .font {
+  font-size: 30rpx;
+  color: #fff;
+}
+.goods-price-type_1 .content-container .left .new-price .b {
+  font-weight: bold;
+  font-size: 48rpx;
+  color: #fff;
+}
+.goods-price-type_1 .content-container .left .oldprice-sale {
+  font-size: 20rpx;
+  color: #fff;
+  justify-content: space-between;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-right: 20rpx;
+}
+.goods-price-type_1 .content-container .left .oldprice-sale .price {
+  text-decoration: line-through;
+}
+.goods-price-type_1 .content-container .right {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 232rpx;
+  background: url('http://m.duinin.com/Public/wap2/img/goods/goods_info/right_time_bg.png')center center no-repeat;
+  background-size: 100% 100%;
+  padding-left: 18rpx;
+}
+.goods-price-type_1 .content-container .right .title {
+  font-size: 22rpx;
+  color: #ff0b0b;
+}
+.goods-price-type_1 .content-container .right .right-time {
+  font-size: 22rpx;
+  color: #ff0b0b;
+}
+.goods-price-type_1 .content-container .right .right-time .font {
+  display: inline-block;
+  padding: 0 2px;
+  height: 38rpx;
+  line-height: 38rpx;
+  background: #ff0b0b;
+  color: #FFF;
+  font-size: 22rpx;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0 1px;
+}
+.goods-price-type_1 .content-container .right .right-time .b {
+  font-size: 30rpx;
+}

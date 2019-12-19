@@ -1,0 +1,18 @@
+<!--components/chains-list-layer/chains-list-layer.wxml-->
+<view class="chains-list-layer" wx:if="{{isShowLayer}}">
+  <view class="layer-model" bindtap="hideLayer" catchtouchmove="true"></view>
+  <view class="layer-body-fixed">
+    <view class="layer-head">
+      <view class="head-title">全部接龙</view>
+      <view class="head-close" bindtap="hideLayer"><icon class="myicon-close"></icon></view>
+    </view>
+    <scroll-view  scroll-y class="layer-main">
+      <view class="chains-list" wx:if="{{chainsData.total > 0}}">
+        <block wx:for="{{chainsData.list}}" wx:key="{{index}}">
+          <chains-list-item chains="{{item}}" key="{{chainsData.total - index}}"></chains-list-item>
+        </block>
+      </view>
+      <view wx:else class="chains-empty">暂无人接龙哦</view>
+    </scroll-view>
+  </view>
+</view>

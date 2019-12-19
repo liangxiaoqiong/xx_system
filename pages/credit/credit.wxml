@@ -1,0 +1,2 @@
+<!--pages/credit/credit.wxml-->
+<web-view src="{{webViewUrl}}"></web-view>

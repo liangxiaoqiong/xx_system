@@ -1,0 +1,40 @@
+<!--components/spec-layer/spec-layer.wxml 多规格弹框-->
+<view class="spec-layer" wx:if="{{isShowSpecLayer && goodsItem.spec_option.length > 0}}">
+  <view class="layer-model" catchtap="hideSpecLayer" catchtouchmove="true"></view>
+  <!--catchtap="{{false}}" 防止点击事件穿透-->
+  <view class="layer-body-fixed">
+    <view class="layer-head">
+      <view class="head-title">{{goodsItem.goods_name}}</view>
+      <view class="head-close" catchtap="hideSpecLayer"><icon class="myicon-close"></icon></view>
+    </view>
+    <view class="layer-main">
+      <block wx:for="{{goodsItem.spec}}" wx:for-index="ispec" wx:key="{{ispec}}">
+        <view class="spec-list">
+          <text>请选择{{item.title}}</text>
+          <view class="spec-item">
+            <block wx:for="{{item.item}}" wx:for-item="option" wx:for-index="idx" wx:key="{{idx}}">
+              <text data-index="{{ispec}}" data-option="{{option}}" catchtap="selectOption"
+                    class="{{chooseSpec[ispec] === option.id ? 'active' : ''}}">{{option.title}}</text>
+            </block>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="layer-foot">
+      <view class="spec-choose">
+        <text class="choose-price">￥{{chooseGoods.price}}</text>
+        <text class="choose-text line-one">{{chooseGoods.specName}}</text>
+        <view class="cart-num-view" wx:if="{{isSelectComplete}}">
+          <view class="cart-num-icon" data-type="minus" catchtap="specNumAction">
+            <icon class="myicon-minus {{chooseGoods.buyNum <= 1 ? 'disabled' : ''}}"></icon>
+          </view>
+          <text>{{chooseGoods.buyNum}}</text>
+          <view class="cart-num-icon" data-type="add" catchtap="specNumAction">
+            <icon class="myicon-add" data-type="add" catchtap="specNumAction"></icon>
+          </view>
+        </view>
+      </view>
+      <view class="submit-btn {{isSelectComplete ? 'active' : ''}}" catchtap="submitChoose">选好了</view>
+    </view>
+  </view>
+</view>

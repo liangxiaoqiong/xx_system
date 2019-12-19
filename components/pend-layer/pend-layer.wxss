@@ -1,0 +1,30 @@
+.layer-model{
+  z-index: 104;
+}
+.layer-body-fixed{
+  z-index: 105;
+}
+.pend-layer .pend-list{
+  display: inline-block;
+  width: 100%;
+  padding: 0 20rpx 30rpx 20rpx;
+}
+.pend-layer .pend-list .pend-text{
+  background-color: #f6f6f6;
+  border: 1px solid #f6f6f6;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #333333;
+  margin: 10rpx;
+  float: left;
+  min-height: 84rpx;
+  width: calc(25% - 20rpx);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pend-layer .pend-list .pend-text.active{
+  color: #f82e2e;
+  border-color: #f82e2e;
+}
