@@ -293,9 +293,9 @@ Page({
         }
       },
       fail (res) {
-        wx.showLoading({
+       /* wx.showLoading({
           title: res.errMsg,
-        })
+        })*/
       }
     })
   },
@@ -445,9 +445,9 @@ Page({
             self.showChainsCardLayer()
           },
           fail: function (res) {
-            wx.showLoading({
+            /*wx.showLoading({
               title: res.errMsg,
-            })
+            })*/
             self.setData({
               canvasHidden: true
             })
@@ -556,9 +556,9 @@ Page({
           self.footCart.updFootBtn(1)
         },
         fail: function (res) {
-          wx.showLoading({
+          /*wx.showLoading({
             title: res.errMsg,
-          })
+          })*/
           self.setData({
             canvasShareHidden: true
           })
